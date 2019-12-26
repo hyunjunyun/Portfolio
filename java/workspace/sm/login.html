@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script>
+function winlogin()
+{
+	document.A.submit();
+}
+</script>
+<link rel="stylesheet" type="text/css" href="board_type1.css" />
+<body>
+	<h1>로그인</h1>
+	<form name="A" type="login" action="logincheck.jsp">
+	<table class="board_write_type1">
+					<tr>
+						<td class="left">
+							<ul class="split_three">
+								<li><fieldset>
+                						<legend>아이디</legend>
+										<div class="column_name"><input type = "text " name="id" size="15"></div>
+									</fieldset>
+									<fieldset>
+                						<legend>비밀번호</legend>
+										<div class="column_name"><input type = "password" name = "pw" size="15"></div>
+									</fieldset>
+									<fieldset>
+                						<legend></legend>
+										<div class="column_name"><input type="button" class="button_type1" value="로그인" onclick="winlogin()"> <input type="button" class="button_type1" value="닫기" onclick = "window.close();"></div>
+									</fieldset>
+									</li>	
+							</ul>
+						</td>
+					</tr>
+
+				</table>
+			</div>
+	</form>
+</body>
+</html>
+
+
+

@@ -1,0 +1,15 @@
+package jdbc;
+
+public class DBManage {
+	public DBManage() {
+		
+	}
+	
+	public void DBSetting() {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (Exception e) {
+			
+		}
+	}
+}

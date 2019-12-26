@@ -1,0 +1,199 @@
+package maincal;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Vector;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+class Dbcal extends JFrame implements ActionListener{
+	Dbset dba;
+	JPanel bpl;
+	JPanel ipl;
+	JPanel mid;
+	JPanel grid;
+	Dbset bbf = new Dbset();
+
+	
+
+	JMenu menu; //메뉴 선언
+
+	JMenuItem menuItem; //메뉴 항목 선언
+
+	JButton addBtn = new JButton("Add");
+	JButton remBtn = new JButton("Remove");
+	JButton resetBtn = new JButton("Reset");
+
+	Vector v;
+	Vector cols;
+	JLabel nl = new JLabel("Name:");
+	JTextField nf = new JTextField();
+	JLabel il = new JLabel("Std Id: ");
+	JTextField sf = new JTextField();
+
+	JLabel al = new JLabel("Avg: ");
+	JTextField af = new JTextField();
+
+	JTable table = new JTable();
+	private String[] head = new String[] { "STD ID", "Name", "Avg" };
+	DefaultTableModel model;
+	Object[][] data = new Object[][] {};
+	private final JMenuBar menuBar = new JMenuBar();
+
+	public Dbcal() {
+		super("STD record Calculator");
+		menuBar = new JMenuBar();
+		menu = new JMenu("File");
+		menuBar.add(menu);
+		menuItem = new JMenuItem("menu1");
+		menu.add(menuItem);
+		tpl.add(menu);
+		cols = bbf.getColumn();
+		v = bbf.getTableValue();
+		model = new DefaultTableModel(data, head);
+		JTable table = new JTable(model);
+		table.getRowSelectionAllowed();
+
+		JPanel grid = new JPanel();
+		grid.setLayout(new GridLayout(4, 1, 5, 5));
+		addBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+// JOptionPane.showMessageDialog(null, "Add Complete");
+				insertValue();
+				setRefresh();
+
+			}
+		});
+		addWindowListener(new WindowAdapter() {
+			public void windowOpened(WindowEvent e) {
+				nf.requestFocus();
+			}
+		});
+		bpl = new JPanel(new BorderLayout());
+		JScrollPane scrollPane = new JScrollPane(table);
+		table.setFillsViewportHeight(true);
+		setRefresh();
+		bpl.add(scrollPane);
+
+		Container mainContainer = this.getContentPane();
+		mainContainer.setLayout(new BorderLayout(8, 6));
+		mainContainer.setBackground(Color.white);
+
+		grid.add(addBtn);
+
+		remBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				Dbset ds = new Dbset();
+				int row = table.getSelectedRow();
+				String std = model.getValueAt(row, 0).toString();
+
+				ds.deleteValue(std);
+				setRefresh();
+			}
+		});
+		grid.add(remBtn);
+
+		resetBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				bbf.allDelete();
+				setRefresh();
+			}
+		});
+		grid.add(resetBtn);
+
+		mid = new JPanel();
+		mid.setLayout(new FlowLayout(5));
+		mid.add(grid);
+
+		mainContainer.add(bpl, BorderLayout.CENTER);
+		mainContainer.add(mid, BorderLayout.WEST);
+
+		JPanel ipl = new JPanel();
+		ipl.setLayout(new FlowLayout(3));
+		ipl.add(nl);
+		ipl.add(nf);
+		nf.setColumns(10);
+		ipl.add(il);
+		ipl.add(sf);
+		sf.setColumns(10);
+		mainContainer.add(ipl, BorderLayout.SOUTH);
+		ipl.add(al);
+		ipl.add(af);
+		af.setColumns(10);
+
+		setBackground(Color.BLACK);
+		setLocationRelativeTo(null);
+		setSize(700, 500);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		setJMenuBar(menuBar_1);
+	}
+
+	public static void main(String[] args) {
+		new Dbcal();
+	}
+
+	public void setRefresh() {
+		Dbset da = new Dbset();
+		da.userRefresh(model);
+	}
+
+	private void insertValue() {
+		Dbadd dda = getViewData();
+		Dbset value = new Dbset();
+		value.insertTablevalue(dda);
+		sf.setText("");
+		nf.setText("");
+		af.setText("");
+	}
+
+	public Dbadd getViewData() {
+		Dbadd da = new Dbadd();
+		String std = nf.getText();
+		String name = sf.getText();
+		int avg = Integer.parseInt(af.getText());
+
+		da.setStd(std);
+		da.setName(name);
+		da.setAvg(avg);
+
+		return da;
+	}
+
+	public void deleteValue() {
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource().equals(addBtn)) {
+			insertValue();
+			setRefresh();
+		}else if(e.getSource().equals(remBtn)) {
+			
+		}else if(e.getSource().equals(resetBtn)) {
+			
+		}else if(e.getSource().equals(saveBtn));
+	}
+
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>image slide</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i'" >
+	<style>
+        * {margin: 0; padding: 0;}
+        a {text-decoration: none}
+        li {list-style: none;}
+        body {background: #333;}
+        h2 {color: #2EDF19; font-family: 'Lato'; font-weight: 300; padding: 20px;}
+
+        .slide_img {
+            width: 600px; height: 300px;
+            margin: auto; overflow: hidden;
+            position: absolute;
+            left: 0; top: 0; bottom: 0; right: 0;
+            box-shadow: 4px 4px 20px rgba(0,0,0,0.5);
+        }
+        .slide_img img {width: 100%;}
+	</style>
+</head>
+<body>
+
+	<h2>Image Slider1 : 3초에 한번씩 변하는 이미지 슬라이드 구현</h2>
+
+  <div class="slide_img" id="slide_img">
+    <div>
+      <img src="../img/wip.png" alt="이미지1">
+    </div>
+    <div>
+        <img src="../img/pa.png" alt="이미지2">
+    </div>
+    <div >
+          <img src="../img/machin.png" alt="이미지3">
+    </div>
+    <div>
+          <img src="../img/codepy.png" alt="이미지4">
+    </div>
+    <div>
+          <img src="../img/tne.png" alt="이미지5">
+    </div>
+  </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script>
+		var slideImg = $(".slide_img");
+		var slides = $(".slide_img").find(">div");		 //슬라이드 이미지
+
+		var currentIndex = 0;							 //현재 이미지
+		var slideCount = slides.length;		             //현재 이미지 개수
+
+		//첫번째(현재) 이미지가 사라지면~ 두번째(다음) 이미지가 나타남
+		//두번째(현재) 이미지가 사라지면~ 세번째(다음) 이미지가 나타남
+
+		function showNext(){
+			var nextIndex = (currentIndex + 1) % slideCount;      	  //다음이미지
+			slides.eq(currentIndex).fadeOut(800);					  //현재이미지를 사라지게~
+			slides.eq(nextIndex).fadeIn(800);						  //다음이미지를 나타나게~
+			//console.log("currentIndex : "+currentIndex);
+			//console.log("nextIndex : "+nextIndex);
+			currentIndex = nextIndex;
+		}
+
+		setInterval(showNext, 3000);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+package main;
+
+import jdbc.DBManage;
+
+public class Main {
+	public static void main(String[] args) {
+		DBManage db = new DBManage();
+	}
+}

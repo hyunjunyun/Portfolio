@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+ <link rel="stylesheet" type="text/css" href="board_type1.css" />
+<body>
+<script>
+	function send_f()
+	{
+		if (document.f.id.value == "" )
+		{
+			alert("아이디를 입력해주세요.");
+			return;
+		}
+		if (document.f.pw.value == "" )
+		{
+			alert("비밀번호를 입력해주세요.");
+			return;
+		}
+		if (document.f.pw.value != document.f.pw_check.value )
+		{
+			document.f.pw.value = ""; 
+			document.f.pw_check.value = "";
+			alert("비밀번호 재확인 값이 다릅니다.");
+			return;
+		}
+		if (document.f.birthday.value == "" )
+		{
+			alert("생일을 입력해주세요.");
+			return;
+		}
+		if (document.f.name.value == "" )
+		{
+			alert("이름을 입력해주세요.");
+			return;
+		}
+		if (document.f.marry.value == "" )
+		{
+			alert("결혼여부를 선택해주세요.");
+			return;
+		}
+		if (document.f.gender.value == "" )
+		{
+			alert("성별을 선택해주세요.");
+			return;
+		}
+		document.f.submit();
+	}
+</script>
+	<form name="f" method = "post" action="join.jsp">
+			<h1>회원가입</h1>
+		
+		
+				<div class="column_name">아이디</div>
+				<div class="column_desc"><input type="text" name="id" class="text_type1"/></div>
+							
+		
+				<div class="column_name">비밀번호</div>
+				<div class="column_desc"><input type="password" name="pw" class="text_type1"/></div>
+							
+		
+				<div class="column_name">비밀번호 재확인</div>
+				<div class="column_desc"><input type="password" name="pw_check" class="text_type1"/></div>
+				
+						
+				<div class="column_name">생일</div>
+				<div class="column_desc"><input type="text" name="birthday" id = "birtday" class="text_type1" onkeyup='fAge()'/></div>
+				
+				<div class="column_name">이름</div>
+				<div class="column_desc"><input type="text" name="name" class="text_type1"></div>
+				
+		<fieldset>
+                <legend>항목선택</legend>
+                <label>
+                    미혼 <input type="radio" name="marry" value="single" />
+                </label>
+                <label for="tid">기혼</label>
+                <input type="radio" name="marry" value="married" id="tid" />
+            </fieldset>	
+            
+            <fieldset>
+                <legend>항목선택</legend>
+                <label>
+                    여자 <input type="radio" name="gender" value="woman" />
+                </label>
+                <label for="sid">남자</label>
+                <input type="radio" name="gender" value="man" id="sid" />
+            </fieldset>			
+            </p>
+		<input type="button" value="complete" class="button button_type1" onclick="send_f()">
+		</form>
+</body>
+</html>

@@ -1,0 +1,50 @@
+package dbcal;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+class Dbcal extends JFrame {
+	JPanel bpl;
+	JPanel tpl;
+	JPanel ipl;
+	JButton db= new JButton("dkdk");
+
+	public Dbcal() {
+		super("STD record Calculator");
+//		setLayout(new BorderLayout(1,1));
+		setSize(700, 300);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		JPanel npl = new JPanel(new BorderLayout());
+//		add(npl);
+
+		Container mainContainer = this.getContentPane();
+		mainContainer.setLayout(new BorderLayout(8, 6));
+		mainContainer.setBackground(Color.white);
+		
+		tpl = new JPanel();
+		tpl.setLayout(new FlowLayout(5,150,100));
+		mainContainer.add(tpl, BorderLayout.WEST);
+		tpl.add(db);
+		
+		ipl = new JPanel();
+		ipl.setLayout(new FlowLayout(5,150,10),BorderLayout.EAST);
+//		npl.add(tpl);
+//		npl.add(bpl);
+//		npl.add(ipl);
+
+//		tpl.setBounds(0, 0, 300, 400);
+//		ipl.setSize(200, 200);
+//		bpl.setSize(400, 200);
+	}
+	public static void main(String[] args) {
+		new Dbcal();
+	}
+
+}

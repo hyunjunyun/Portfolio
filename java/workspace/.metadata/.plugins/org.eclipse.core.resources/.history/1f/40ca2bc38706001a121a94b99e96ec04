@@ -1,0 +1,13 @@
+import java.awt.Image;
+
+public class ImagePanel {
+
+	public static void main(String[] args) extends JPanel{
+		// TODO Auto-generated method stub
+		Image img;
+		public ImagePanel(Image img) {
+			this.img =  img;
+		}
+	}
+
+}

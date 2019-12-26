@@ -1,0 +1,12 @@
+import java.awt.Image;
+
+import javax.swing.JPanel;
+
+public class ImagePanel extends JPanel{
+
+		Image img;
+		public ImagePanel(Image img) {
+			this.img =  img;
+		}
+
+}

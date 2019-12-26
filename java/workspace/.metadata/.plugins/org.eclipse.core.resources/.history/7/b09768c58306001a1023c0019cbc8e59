@@ -1,0 +1,72 @@
+package stdRes;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class Result extends JFrame {
+
+	private JPanel contentPane;
+	JFrame jf = new JFrame();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Result frame = new Result();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public void go() {
+		jf.getContentPane().setLayout(new BorderLayout());
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	 public void initGUIf1(){
+		  
+		  namepanel.add(namelabel);
+		  namepanel.add(tfname);
+		  cenpanel.add(namepanel);
+		  
+		  hakpanel.add(haklabel);
+		  hakpanel.add(tfhak);
+		  cenpanel.add(hakpanel);
+		  
+		  kookpanel.add(kooklabel);
+		  kookpanel.add(tfkook);
+		  cenpanel.add(kookpanel);
+		  
+		  mathpanel.add(mathlabel);
+		  mathpanel.add(tfmath);
+		  cenpanel.add(mathpanel);
+		  
+		  engpanel.add(englabel);
+		  engpanel.add(tfeng);
+		  cenpanel.add(engpanel);
+		  
+		  f.getContentPane().add(cenpanel, BorderLayout.CENTER);
+		  
+		  buttonpanel.add(button3);
+		  buttonpanel.add(button);
+		  buttonpanel.add(button2);
+		  f.getContentPane().add(buttonpanel,BorderLayout.SOUTH);
+		  
+		  button.addActionListener(this);
+		  button2.addActionListener(this);
+		  button3.addActionListener(this);
+		 
+
+}

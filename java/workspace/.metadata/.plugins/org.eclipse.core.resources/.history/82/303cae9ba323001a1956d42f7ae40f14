@@ -1,0 +1,29 @@
+package jdbc;
+
+public class Createdb {
+
+	public void createDB() throws Exception {
+		DBManage.stmt.execute("DROP DATABASE IF EXISTS COMPANY101");
+		DBManage.stmt.execute("CREATE DATABASE `COMPANY101` DEFAULT CHARACTER SET utf8");
+		DBManage.stmt.execute("USE COMPANY101");
+		DBManage.stmt.execute("DROP USER IF EXISTS 'user' @ 'localhost';");
+		DBManage.stmt.execute("create user 'user'@'localhost' identify by '1234'");
+		DBManage.stmt.execute("grant select,inset,delete, update on COMPANY101.* to 'user'@'localhost'");
+		DBManage.stmt.execute("FLUSH PRIVILEGES");
+
+	}
+
+	public void createTable() throws Exception {
+		DBManage.stmt.execute("CREATE TABLE admin(" + "name VARCHAR(20) not null primary key"
+				+ "passwd VARCHAR(20) not null primary key" + "position VARCHAR(20) " + "jumin CHAR(14)"
+				+ "inputDate DATE" + "primary key(name,passwd));");
+
+		DBManage.stmt.execute("CREATE TABLE customer(" + "code char(7) not null" + "name varchar(20) not null"
+				+ "birth date" + "tel varchar(20)" + "address varchar(100)" + "company varchar(20)"
+				+ "primary key(code,name));");
+		DBManage.stmt.execute("CRAETE TABLE contract(" + "customerCode char(7) not null"
+				+ "contractName varchar(20) not null" + "regPrice int" + "regDate date not null" + "monthPrice int"
+				+ "adminName varchar(20) not null");
+
+	}
+}

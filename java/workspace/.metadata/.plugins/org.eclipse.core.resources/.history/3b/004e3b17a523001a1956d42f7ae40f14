@@ -1,0 +1,15 @@
+package jdbc;
+
+import java.io.BufferedReader;import java.util.zip.InflaterInputStream;
+
+import jdk.internal.org.jline.utils.InputStreamReader;
+import jdk.javadoc.internal.doclets.formats.html.ModuleFrameWriter;
+
+public class Fileloader {
+	public String[][] FileLoader(){
+		BufferedReader text = new BufferedReader(new InputStreamReader(
+				
+				))
+	}
+	
+}

@@ -1,0 +1,154 @@
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+public class App {
+
+	private final String ID = "1";
+	private final String PASS = "1";
+	private JFrame frame;
+	private JTextField idField;
+	private JTextField pwField;
+	private JButton loginBtn;
+	private JButton tranBtn;
+	private JButton sumBtn;
+	private JPanel currPanel;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					App window = new App();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public App() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		// frame
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		ImagePanel sumPanel = new ImagePanel(
+				new ImageIcon("C:\\hjun\\code\\java\\workspace\\Accountingapp\\imgsrc\\Activation.jpg").getImage());
+
+		ImagePanel loginPanel = new ImagePanel(
+				new ImageIcon("C:\\hjun\\code\\java\\workspace\\Accountingapp\\imgsrc\\theme.jpg").getImage());
+		currPanel = loginPanel;
+		frame.setSize(loginPanel.getDim());
+		frame.setPreferredSize(loginPanel.getDim());
+		frame.getContentPane().add(loginPanel);
+
+		// Field
+
+		idField = new JTextField();
+		idField.setFont(new Font("±¼¸²", Font.PLAIN, 25));
+		idField.setBounds(1223, 311, 296, 43);
+		loginPanel.add(idField);
+		idField.setColumns(10);
+		idField.setBorder(null);
+
+		pwField = new JPasswordField();
+		pwField.setFont(new Font("±¼¸²", Font.PLAIN, 25));
+		pwField.setColumns(10);
+		pwField.setBounds(1223, 390, 296, 43);
+		loginPanel.add(pwField);
+		pwField.setBorder(null);
+
+		JCheckBox checkRE = new JCheckBox("Remember me?");
+		checkRE.setBounds(1189, 437, 120, 23);
+		loginPanel.add(checkRE);
+
+		// Summary Button
+		loginBtn = new JButton("Login");
+		loginBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (ID.equals(idField.getText()) && PASS.equals(pwField.getText())) {
+					JOptionPane.showMessageDialog(null, "Login Success");
+					currPanel.setVisible(false);
+					sumPanel.setVisible(true);
+					currPanel = sumPanel;
+				} else {
+					JOptionPane.showMessageDialog(null, "Login Failed");
+				}
+			}
+
+		});
+		loginBtn.setBorder(null);
+		loginBtn.setBounds(1183, 467, 350, 40);
+		loginBtn.setIcon(new ImageIcon("C:\\hjun\\code\\java\\workspace\\Accountingapp\\imgsrc\\button.jpg"));
+		loginPanel.add(loginBtn);
+		loginBtn.setPressedIcon(
+				new ImageIcon("C:\\hjun\\code\\java\\workspace\\Accountingapp\\imgsrc\\btnClicked.jpg"));
+		ImagePanel tranPanel = new ImagePanel(
+				new ImageIcon("C:\\hjun\\code\\java\\workspace\\Accountingapp\\imgsrc\\Activation.jpg").getImage());
+		frame.getContentPane().add(tranPanel);
+
+		tranPanel.setVisible(false);
+		frame.getContentPane().add(sumPanel);
+		sumPanel.setVisible(false);
+
+		tranBtn = new JButton("");
+		tranBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				currPanel.setVisible(false);
+				tranPanel.setVisible(true);
+				currPanel = tranPanel;
+			}
+
+		});
+		tranBtn.setBounds(25, 162, 270, 50);
+		tranBtn.setIcon(new ImageIcon("C:\\hjun\\code\\java\\workspace\\Accountingapp\\imgsrc\\activationBtn.jpg"));
+		sumPanel.add(tranBtn);
+		tranBtn.setBorder(null);
+
+		sumBtn = new JButton("");
+		sumBtn.setBounds(25, 110, 270, 50);
+		sumBtn.setIcon(new ImageIcon("C:\\hjun\\code\\java\\workspace\\Accountingapp\\imgsrc\\Summery.PNG"));
+		sumBtn.setBorder(null);
+		sumBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				currPanel.setVisible(false);
+				sumPanel.setVisible(true);
+				currPanel = sumPanel;
+			}
+		});
+		tranPanel.add(sumBtn);
+
+		frame.pack();
+	}
+}

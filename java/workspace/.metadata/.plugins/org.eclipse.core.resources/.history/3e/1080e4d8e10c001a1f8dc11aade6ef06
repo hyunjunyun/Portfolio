@@ -1,0 +1,38 @@
+package dbcal;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+class Dbcal extends JFrame{
+	public static void main(String[] args) {
+		
+	}
+	
+	public Dbcal(){
+		super("STD record Calculator");
+		setLayout(new BorderLayout(1,1));
+		setSize(520,440);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 	
+		
+		JPanel tpl = new JPanel();
+		JPanel ipl = new JPanel();
+		JPanel bpl = new JPanel();
+		add(tpl);
+		add(ipl);
+		add(bpl);
+		
+		tpl.setSize(300,400);
+		tpl.setLayout(new BorderLayout()), CENTER_ALIGNMENT);
+		
+		
+		ipl.setLayout(new BorderLayout());
+		ipl.setSize(200,200);
+		
+		
+		bpl.setSize(200,200);
+		bpl.setLayout(new BorderLayout());
+	}
+}

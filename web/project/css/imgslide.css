@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+a{
+  text-decoration: none;
+}
+
+li{
+  list-style: none;
+}
+
+
+.slide_img{
+  width: 600px;height: 300px;
+  overflow: hidden;
+  position:absolute;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.5);
+}
+.slide_img img{
+  width: 100%;
+}
+
+.slide_imgJ{
+  width: 600px;height: 300px;
+  overflow: hidden;
+  position:absolute;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.5);
+}
+.slide_imgJ img{
+  width: 100%;
+}
+
+@media query {
+
+}

@@ -1,0 +1,14 @@
+package jdbc;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+
+
+public class Fileloader {
+	public String[][] FileLoader(String filename){
+		BufferedReader text = new BufferedReader(new InputStreamReader(
+				new FileInputStream("../file" +filename + ".txt"),"UTF-8"))
+	}
+	
+}

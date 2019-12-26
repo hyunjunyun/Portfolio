@@ -1,0 +1,65 @@
+package dbcal;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+class Dbcal extends JFrame {
+	JPanel bpl;
+	JPanel tpl;
+	JPanel ipl;
+	JButton db= new JButton("bt1");
+	JButton db1= new JButton("bt2");
+	JButton db12= new JButton("bt3");
+	
+	JTable table = new JTable();
+	String[] head = new String[] {"one","2","3","4","5"};
+	Object[][] data = new Object[][] {
+		{1,2,3,4,5},
+		{1,2,3,4,5},
+		{1,2,3,4,5}
+	};
+	public Dbcal() {
+		super("STD record Calculator");
+//		setLayout(new BorderLayout(1,1));
+		setSize(700, 500);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		JPanel npl = new JPanel(new BorderLayout());
+//		add(npl);
+
+		Container mainContainer = this.getContentPane();
+		mainContainer.setLayout(new BorderLayout(8, 6));
+		mainContainer.setBackground(Color.white);
+		
+		tpl = new JPanel();
+		tpl.setLayout(new FlowLayout(5));
+		mainContainer.add(tpl, BorderLayout.NORTH);
+		tpl.add(db);
+		tpl.add(db1);
+		tpl.add(db12);
+		
+		ipl = new JPanel();		
+		ipl.setLayout(new FlowLayout(10,10,40));
+		mainContainer.add(ipl, BorderLayout.EAST);
+		DefaultTableModel model = new DefaultTableModel(data,head);
+		table = new JTable(model);
+		table.setPreferredScrollableViewportSize(new Dimension(300,300));
+		ipl.add(table);
+		
+		JPanel mid = new JPanel();
+		
+	}
+	public static void main(String[] args) {
+		new Dbcal();
+	}
+
+}

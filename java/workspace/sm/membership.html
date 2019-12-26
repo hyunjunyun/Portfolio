@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<script>
+function winlogin()
+{
+	document.A.submit();
+}
+</script>
+<body>
+	<h1>회원가입</h1>
+	<form name="A" type="join" action="join.jsp">
+		아이디 : <input type = "text " name="id" size="15"><br>
+		비밀번호 : <input type = "password" name = "pw"><br>
+		생일 : <input type = "text" name = "birth"><br>
+		이름: <input type = "text" name = "name"><br>
+		<fieldset>
+		<legend>항목선택</legend>
+		<label>
+		미혼<input type = "radio" name = "marry" value="single"/>
+		</label>
+		<label for = "tid">기혼</label>
+		<input type = "radio" name = "marry" value="married" id = "tid"/>
+		</fieldset>
+		
+		<fieldset>
+		<legend>항목선택</legend>
+		<label>
+		여자<input type = "radio" name = "gender" value="woman"/>
+		</label>
+		<label for = "tid">남자</label>
+		<input type = "radio" name = "gender" value="man" id = "sid"/>
+		</fieldset>
+		<input type="submit" value="확인" onclick="">
+	</form>
+</body>
+</html>
+
+
+

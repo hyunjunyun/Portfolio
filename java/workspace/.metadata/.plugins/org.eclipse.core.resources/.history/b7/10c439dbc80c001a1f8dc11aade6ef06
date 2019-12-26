@@ -1,0 +1,13 @@
+package dbcal;
+
+import javax.swing.JFrame;
+
+class Dbcal extends JFrame{
+	public static void main(String[] args) {
+		
+	}
+	
+	public Dbcal(){
+		setVisible(true);
+	}
+}

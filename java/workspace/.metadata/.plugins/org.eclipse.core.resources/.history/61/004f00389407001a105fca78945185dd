@@ -1,0 +1,30 @@
+package stdResult;
+public class Student {
+	 private String name;
+	 private String std;
+	 private int kor;
+	 private int math;
+	 private int eng;
+	 private int sum;
+	 private int avg;
+	 
+	 Student(String name, String std, int kor, int math, int eng) {
+	  this.name = name;
+	  this.std = std;
+	  this.kor = kor;
+	  this.math = math;
+	  this.eng = eng;
+	  this.sum = kor + math + eng;
+	  this.avg = sum / 3;
+	 }
+	 
+	 public String toString(){
+		 String abc = "학생's name " + name + " 학번은 " + std + " 총점은 " + sum + " 평균은 " + avg +
+				    "입니다.";
+	  return abc;
+	 }
+	 
+	 public String setName() {
+		 return name;
+	 }
+	}
