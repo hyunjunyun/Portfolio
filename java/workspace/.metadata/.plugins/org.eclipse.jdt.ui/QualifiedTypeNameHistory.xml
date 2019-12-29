@@ -30,7 +30,6 @@
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="com.mysql.cj.jdbc.Driver"/>
 <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxCursor.Open"/>
-<fullyQualifiedTypeName name="frame.LoginPanel"/>
 <fullyQualifiedTypeName name="data.Dbset"/>
 <fullyQualifiedTypeName name="java.sql.PseudoColumnUsage"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="java.util.Spliterator"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Executable"/>
+<fullyQualifiedTypeName name="frame.LoginPanel"/>
 </qualifiedTypeNameHistroy>

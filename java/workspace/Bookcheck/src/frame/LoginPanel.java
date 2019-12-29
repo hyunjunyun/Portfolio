@@ -31,7 +31,7 @@ public class LoginPanel extends JFrame implements ActionListener {
 		lgnbtn = new JButton("Login");
 		lgnbtn.setFont(new Font("Tahoma", Font.PLAIN, 17));
 
-		lgnbtn.setBounds(209, 210, 141, 51);
+		lgnbtn.setBounds(190, 210, 141, 51);
 		getContentPane().add(background);
 		ImagePanel loginPanel = new ImagePanel(
 				new ImageIcon("C:\\hjun\\code\\java\\workspace\\Bookcheck\\Image\\lgnimg.png").getImage());
@@ -44,7 +44,7 @@ public class LoginPanel extends JFrame implements ActionListener {
 
 		JButton btnResister = new JButton("Resister");
 		btnResister.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnResister.setBounds(95, 210, 99, 51);
+		btnResister.setBounds(70, 210, 99, 51);
 		loginPanel.add(btnResister);
 
 		idField = new JTextField();
@@ -61,7 +61,7 @@ public class LoginPanel extends JFrame implements ActionListener {
 
 		JButton btnExit = new JButton("Exit");
 		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnExit.setBounds(362, 210, 67, 51);
+		btnExit.setBounds(340, 210, 67, 51);
 		loginPanel.add(btnExit);
 
 		JLabel lgnLabel = new JLabel("Book management program");
@@ -98,5 +98,10 @@ public class LoginPanel extends JFrame implements ActionListener {
 		if (obj.equals(lgnbtn)) {
 			
 		}
+	}
+	
+	
+	public static void main(String[] args) {
+		new LoginPanel();
 	}
 }
