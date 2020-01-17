@@ -1,2 +1,1 @@
-# Portfolio by YHJ
-# Thank you for watching :)
+# Just Practice
