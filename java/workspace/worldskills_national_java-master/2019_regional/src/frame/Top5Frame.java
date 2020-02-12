@@ -1,21 +1,14 @@
 package frame;
 
 import java.awt.BasicStroke;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.Stroke;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.geom.Rectangle2D;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -55,7 +48,7 @@ public class Top5Frame extends FrameBase {
 					int w = (int)(((float)rs.getInt(2) / max) * 310);
 					
 					g2d.setColor(colorList[y]);
-					g2d.fillRect(70, 70 + (y * 65), w, 30);
+					g2d.fillRect (70, 70 + (y * 65), w, 30);
 					
 					g2d.setColor(Color.BLACK);
 					g2d.drawRect(70, 70 + (y * 65), w, 30);
@@ -66,7 +59,6 @@ public class Top5Frame extends FrameBase {
 				}
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

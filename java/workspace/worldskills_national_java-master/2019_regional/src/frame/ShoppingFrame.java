@@ -1,27 +1,17 @@
 package frame;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 
 public class ShoppingFrame extends FrameBase {
 	DefaultTableModel dtm = new DefaultTableModel("n,메뉴명,가격,수량,사이즈,금액".split(","), 0);
@@ -54,7 +44,7 @@ public class ShoppingFrame extends FrameBase {
 		dtm.setRowCount(0);
 		
 		try (var rs = stmt.executeQuery("SELECT shopping.*, menu.m_name FROM shopping "
-				+ "INNER JOIN menu ON shopping.m_no = menu.m_no")) {
+				+ "INNER JOIN menu ON shopping.m_no = menu.m_no")) {	
 			
 			while (rs.next()) {
 				dtm.addRow(new Object[] {

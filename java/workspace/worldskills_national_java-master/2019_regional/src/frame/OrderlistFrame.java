@@ -1,23 +1,15 @@
 package frame;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 
 public class OrderlistFrame extends FrameBase {
 
@@ -40,6 +32,7 @@ public class OrderlistFrame extends FrameBase {
 		}
 		
 		table.getColumn("¸Þ´º¸í").setPreferredWidth(200);
+		
 		
 		try (var pst = con.prepareStatement("SELECT orderlist.*, menu.m_name FROM orderlist "
 				+ "INNER JOIN menu ON menu.m_no = orderlist.m_no "

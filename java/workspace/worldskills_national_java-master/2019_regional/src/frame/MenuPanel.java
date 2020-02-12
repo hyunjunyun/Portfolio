@@ -1,20 +1,20 @@
 package frame;
 
+import static frame.FrameBase.createButton;
+import static frame.FrameBase.createComp;
+import static frame.FrameBase.getImage;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-import static frame.FrameBase.*;
-
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.util.Locale;
 
 public class MenuPanel extends JPanel {
 

@@ -19,8 +19,7 @@ public class LoginFrame extends FrameBase {
 	public LoginFrame() {
 		super(340, 190, "·Î±×ÀÎ");
 
-		add(createComp(createLabel(new JLabel("STARBOX", JLabel.CENTER), new Font("Franklin Gothic Heavy", 0, 24)), 0,
-				40), BorderLayout.NORTH);
+		add(createComp(createLabel(new JLabel("STARBOX", JLabel.CENTER),new Font("Franklin Gothic",0,24)),0,40),BorderLayout.NORTH);
 
 		JPanel centerPanel = new JPanel(null);
 
