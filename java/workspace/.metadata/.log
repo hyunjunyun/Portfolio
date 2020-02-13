@@ -10286,3 +10286,41 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2020-02-13 10:55:12.576
+!MESSAGE Internal Error
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryModuleBinding.create(BinaryModuleBinding.java:99)
+	at org.eclipse.jdt.internal.compiler.impl.ITypeRequestor.accept(ITypeRequestor.java:65)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getModuleFromAnswer(LookupEnvironment.java:437)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.askForTypeFromModules(LookupEnvironment.java:374)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.askForType(LookupEnvironment.java:236)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getType(LookupEnvironment.java:1701)
+	at org.eclipse.jdt.internal.compiler.lookup.Scope.problemType(Scope.java:3010)
+	at org.eclipse.jdt.internal.compiler.lookup.Scope.getPackage(Scope.java:2982)
+	at org.eclipse.jdt.internal.compiler.ast.QualifiedTypeReference.getTypeBinding(QualifiedTypeReference.java:111)
+	at org.eclipse.jdt.internal.compiler.ast.JavadocQualifiedTypeReference.internalResolveType(JavadocQualifiedTypeReference.java:49)
+	at org.eclipse.jdt.internal.compiler.ast.JavadocQualifiedTypeReference.resolveType(JavadocQualifiedTypeReference.java:92)
+	at org.eclipse.jdt.internal.compiler.ast.TypeReference.resolveType(TypeReference.java:620)
+	at org.eclipse.jdt.internal.compiler.ast.Javadoc.resolveReference(Javadoc.java:399)
+	at org.eclipse.jdt.internal.compiler.ast.Javadoc.resolve(Javadoc.java:247)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.resolve(TypeDeclaration.java:1287)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.resolve(TypeDeclaration.java:1405)
+	at org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration.resolve(CompilationUnitDeclaration.java:652)
+	at org.eclipse.jdt.internal.core.search.matching.MatchLocator.process(MatchLocator.java:2004)
+	at org.eclipse.jdt.internal.core.search.matching.MatchLocator.locateMatches(MatchLocator.java:1336)
+	at org.eclipse.jdt.internal.core.search.matching.MatchLocator.locateMatches(MatchLocator.java:1373)
+	at org.eclipse.jdt.internal.core.search.matching.MatchLocator.locateMatches(MatchLocator.java:1515)
+	at org.eclipse.jdt.internal.core.search.JavaSearchParticipant.locateMatches(JavaSearchParticipant.java:112)
+	at org.eclipse.jdt.internal.core.search.BasicSearchEngine.findMatches(BasicSearchEngine.java:250)
+	at org.eclipse.jdt.internal.core.search.BasicSearchEngine.search(BasicSearchEngine.java:595)
+	at org.eclipse.jdt.core.search.SearchEngine.search(SearchEngine.java:670)
+	at org.eclipse.jdt.internal.corext.callhierarchy.CallerMethodWrapper.findChildren(CallerMethodWrapper.java:155)
+	at org.eclipse.jdt.internal.corext.callhierarchy.MethodWrapper.performSearch(MethodWrapper.java:267)
+	at org.eclipse.jdt.internal.corext.callhierarchy.MethodWrapper.doFindChildren(MethodWrapper.java:198)
+	at org.eclipse.jdt.internal.corext.callhierarchy.MethodWrapper.getCalls(MethodWrapper.java:89)
+	at org.eclipse.jdt.internal.ui.callhierarchy.DeferredMethodWrapper.getCalls(DeferredMethodWrapper.java:70)
+	at org.eclipse.jdt.internal.ui.callhierarchy.DeferredMethodWrapper.fetchDeferredChildren(DeferredMethodWrapper.java:78)
+	at org.eclipse.ui.progress.DeferredTreeContentManager$1.run(DeferredTreeContentManager.java:219)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
