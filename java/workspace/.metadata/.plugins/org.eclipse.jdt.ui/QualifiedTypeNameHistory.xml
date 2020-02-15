@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.nio.file.Files"/>
-<fullyQualifiedTypeName name="java.nio.file.Path"/>
-<fullyQualifiedTypeName name="java.nio.file.Paths"/>
-<fullyQualifiedTypeName name="jdk.vm.ci.code.site.Infopoint"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="frame.AdminFrame"/>
-<fullyQualifiedTypeName name="javax.swing.table.DefaultTableCellRenderer"/>
 <fullyQualifiedTypeName name="javax.swing.JTextField"/>
 <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
 <fullyQualifiedTypeName name="javax.swing.JTable"/>
@@ -16,7 +9,6 @@
 <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
 <fullyQualifiedTypeName name="java.awt.event.MouseEvent"/>
 <fullyQualifiedTypeName name="com.sun.org.apache.bcel.internal.generic.Select"/>
-<fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="frame.MenuEditFrame"/>
 <fullyQualifiedTypeName name="frame.MenuPanel"/>
 <fullyQualifiedTypeName name="javax.swing.table.TableColumn"/>
@@ -58,6 +50,14 @@
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.lang.OutOfMemoryError"/>
 <fullyQualifiedTypeName name="대전.SearchForm"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="대전.AddNewForm"/>
+<fullyQualifiedTypeName name="dispatch.DispatchDynamic"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="com.sun.java_cup.internal.runtime.Scanner"/>
+<fullyQualifiedTypeName name="Baekjoon.Baekjoon1009"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>
