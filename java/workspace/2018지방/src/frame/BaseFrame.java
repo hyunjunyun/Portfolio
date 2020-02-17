@@ -103,4 +103,13 @@ public class BaseFrame extends JFrame {
 		jp.setBorder(BorderFactory.createEmptyBorder(x, y, w, h));
 	}
 
+//	@Override
+//	public boolean isCellEditable(int row, int column) {
+//		if (column == 1) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
+
 }

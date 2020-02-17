@@ -53,6 +53,8 @@ public class Payform extends BaseFrame {
 		mtf.setEditable(false);
 		curType = type;
 
+//		table.isCellEditable(row, column);
+		
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2) {
@@ -60,8 +62,7 @@ public class Payform extends BaseFrame {
 				}
 			}
 		});
-		
-		table.isCellEditable(0, 0);
+
 		jp.add(lbt, BorderLayout.NORTH);
 		jp.add(wp, BorderLayout.WEST);
 		wp.add(setComp(new JLabel("  "), 480, 30));
@@ -74,6 +75,7 @@ public class Payform extends BaseFrame {
 		title(type);
 		menuBtn(type);
 	}
+
 
 	public void insert(ActionEvent e) {
 		String name = mtf.getText();
@@ -92,7 +94,8 @@ public class Payform extends BaseFrame {
 			eMsg("수량을 입력해주세요.");
 			return;
 		}
-		hash.get(name).setEnabled(false);;
+		hash.get(name).setEnabled(false);
+		;
 		mtf.setText("");
 		ctf.setText("");
 	}
@@ -145,5 +148,5 @@ public class Payform extends BaseFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
 }
