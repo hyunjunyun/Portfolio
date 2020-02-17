@@ -3,6 +3,7 @@ package frame;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -36,10 +37,10 @@ public class BaseFrame extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public BaseFrame(int w, int h, String title) {
 		JPanel jp = new JPanel();
-		setSize(w,h);
+		setSize(w, h);
 		setTitle(title);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -64,12 +65,26 @@ public class BaseFrame extends JFrame {
 	}
 
 	public static <T extends JComponent> T setComp(T comp, int x, int y) {
-		comp.setPreferredSize(new Dimension(x,y));
+		comp.setPreferredSize(new Dimension(x, y));
 		return comp;
 	}
 
 	public static JButton setBtn(String t, ActionListener e) {
 		var btn = new JButton(t);
+		btn.addActionListener(e);
+		return btn;
+
+	}
+	
+	public static JButton setBtnM(JButton btn, Font font, ActionListener e) {
+		btn.setMargin(new Insets(10, 10, 10, 10));
+		btn.addActionListener(e);
+		return btn;
+		
+	}
+	
+
+	public static JButton setBtn(JButton btn, ActionListener e) {
 		btn.addActionListener(e);
 		return btn;
 	}
@@ -82,10 +97,10 @@ public class BaseFrame extends JFrame {
 		dispose();
 		frame.setVisible(true);
 	}
-	
+
 	public void setBorder(int x, int y, int w, int h) {
 		JPanel jp = new JPanel();
-		jp.setBorder(BorderFactory.createEmptyBorder(x,y,w,h));
+		jp.setBorder(BorderFactory.createEmptyBorder(x, y, w, h));
 	}
 
 }
