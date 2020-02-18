@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.BorderFactory;
@@ -21,7 +22,13 @@ public class Payform extends BaseFrame {
 
 	JLabel lbt = setComp(setLabel(new JLabel("", 0), new Font("굴림", 1, 24)), 0, 30);
 	JPanel wp = setComp(new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0)), 460, 300);
-	DefaultTableModel model = new DefaultTableModel("상품번호,품명,수량,금액".split(","), 0);
+	DefaultTableModel model = new DefaultTableModel("상품번호,품명,수량,금액".split(","), 0) {
+		@Override
+		public boolean isCellEditable(int row11, int column11) {
+			return false;
+		}
+	};
+
 	JTable table = new JTable(model);
 	JLabel amount = setComp(setLabel(new JLabel("", 4), new Font("굴림", 1, 16)), 100, 0, 180, 30);
 	JTextField mtf = setComp(new JTextField(), 240, 23);
@@ -53,29 +60,27 @@ public class Payform extends BaseFrame {
 		mtf.setEditable(false);
 		curType = type;
 
-//		table.isCellEditable(row, column);
-		
-		table.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				if (e.getClickCount() == 2) {
-					System.out.println("a");
-				}
-			}
-		});
-
 		jp.add(lbt, BorderLayout.NORTH);
 		jp.add(wp, BorderLayout.WEST);
 		wp.add(setComp(new JLabel("  "), 480, 30));
 		jp.add(ep, BorderLayout.EAST);
 		ep.add(ep_s, BorderLayout.SOUTH);
 
-		jp.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		jp.setBorder(BorderFactory.createEmptyBorder());
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() == 2) {
+					int row = table.getSelectedRow();
+					hash.get(model.getValueAt(row, 1)).setEnabled(true);
+					model.removeRow(row);
+				}
+			}
+		});
 
 		add(jp);
 		title(type);
 		menuBtn(type);
 	}
-
 
 	public void insert(ActionEvent e) {
 		String name = mtf.getText();
@@ -89,19 +94,23 @@ public class Payform extends BaseFrame {
 				eMsg("조리가능수량이 부족합니다.");
 				return;
 			}
-			model.addRow(new Object[] { curMenuNo, name, curMenuPrice, curMenuPrice * cnt });
+			model.addRow(new Object[] { curMenuNo, name, cnt,curMenuPrice * cnt });
 		} catch (NumberFormatException e2) {
 			eMsg("수량을 입력해주세요.");
 			return;
 		}
 		hash.get(name).setEnabled(false);
-		;
 		mtf.setText("");
 		ctf.setText("");
 	}
 
 	public void pay(ActionEvent e) {
-
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (int i = 0; i < model.getRowCount(); i++) {
+			list.add((Integer) model.getValueAt(i, 0));
+		}
+		System.out.println(list);
+		openFrame(new UserCertifiForm());
 	}
 
 	public void submit(String name, int no, int price, int MaxCount) {

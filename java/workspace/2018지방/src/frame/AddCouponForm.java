@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -69,6 +68,14 @@ public class AddCouponForm extends BaseFrame {
 
 			}
 		}).start();
+		
+//		addWindowListener(new WindowAdapter() {
+//			@Override
+//			public void windowClosed(WindowEvent e) {
+//				openFrame(new MainForm());
+//			}
+//		});
+//		
 		add(sp, BorderLayout.SOUTH);
 	}
 

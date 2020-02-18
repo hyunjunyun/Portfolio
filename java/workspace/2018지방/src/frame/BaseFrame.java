@@ -1,9 +1,11 @@
 package frame;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -18,6 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class BaseFrame extends JFrame {
@@ -102,14 +106,28 @@ public class BaseFrame extends JFrame {
 		JPanel jp = new JPanel();
 		jp.setBorder(BorderFactory.createEmptyBorder(x, y, w, h));
 	}
-
-//	@Override
-//	public boolean isCellEditable(int row, int column) {
-//		if (column == 1) {
-//			return true;
-//		} else {
-//			return false;
+	
+//	public JComponent setEmptyBorder(int x, int y, int w, int h, JComponent...com) {
+//		JPanel jp = new JPanel();
+//		jp.setBorder(BorderFactory.createEmptyBorder(x,y,w,h));
+//		
+//		for (JComponent comp : com) {
+//			jp.add(comp);
 //		}
+//		return jp;
 //	}
+	
+	public static JPanel setPanel(LayoutManager lay, JComponent...com) {
+		var jp = new JPanel(lay);
+		for (JComponent comp : com) {
+			jp.add(comp);
+		}
+		return jp;
+	}
+	
+	public static JComponent setEmpty(JPanel jp, int x, int y, int w, int h) {
+		jp.setBorder(BorderFactory.createEmptyBorder(x,y,w,h));
+		return jp;
+	}
 
 }
