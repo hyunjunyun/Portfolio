@@ -21,7 +21,7 @@ public class Dbsetting {
 
 		stmt.execute("CREATE TABLE IF NOT EXISTS `MealSetting`.`member` (\r\n"
 				+ "  `memberNo` INT(11) NOT NULL AUTO_INCREMENT,\r\n"
-				+ "  `memberName` VARCHAR(20) NULL DEFAULT NULL,\r\n" + "  `passwf` VARCHAR(4) NULL DEFAULT NULL,\r\n"
+				+ "  `memberName` VARCHAR(20) NULL DEFAULT NULL,\r\n" + "  `passwd` VARCHAR(4) NULL DEFAULT NULL,\r\n"
 				+ "  PRIMARY KEY (`memberNo`))\r\n" + "ENGINE = InnoDB\r\n" + "DEFAULT CHARACTER SET = utf8;");
 
 		stmt.execute("CREATE TABLE IF NOT EXISTS `MealSetting`.`cuisine` (\r\n"
@@ -30,7 +30,7 @@ public class Dbsetting {
 				+ "ENGINE = InnoDB\r\n" + "DEFAULT CHARACTER SET = utf8;");
 
 		stmt.execute("CREATE TABLE IF NOT EXISTS `MealSetting`.`meal` (\r\n"
-				+ "  `mealNo` INT(11) NOT NULL AUTO_INCREMENT,\r\n" + "  `cusineNo` INT(11) NULL DEFAULT NULL,\r\n"
+				+ "  `mealNo` INT(11) NOT NULL AUTO_INCREMENT,\r\n" + "  `cuisineNo` INT(11) NULL DEFAULT NULL,\r\n"
 				+ "  `mealName` VARCHAR(20) NULL DEFAULT NULL,\r\n" + "  `price` INT(11) NULL DEFAULT NULL,\r\n"
 				+ "  `maxCount` INT(11) NULL DEFAULT NULL,\r\n" + "  `todayMeal` TINYINT(4) NULL DEFAULT NULL,\r\n"
 				+ "  PRIMARY KEY (`mealNo`))\r\n" + "ENGINE = InnoDB\r\n" + "DEFAULT CHARACTER SET = utf8;");

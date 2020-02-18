@@ -8,14 +8,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class NewMember extends BaseFrame {
+public class AddNewMember extends BaseFrame {
 
 	JTextField nbf = new JTextField();
 	JTextField nf = new JTextField();
 	JTextField pf = new JTextField();
 	JTextField rpf = new JTextField();
 
-	public NewMember() {
+	public AddNewMember() {
 		super(350, 250, "사원등록");
 		
 		JPanel jp = new JPanel();
@@ -80,6 +80,6 @@ public class NewMember extends BaseFrame {
 	}
 
 	public static void main(String[] args) {
-		new NewMember().setVisible(true);
+		new AddNewMember().setVisible(true);
 	}
 }
