@@ -14,9 +14,9 @@ public class AdminFrame extends BaseFrame {
 		var lbImg = setComp(new JLabel(setIcon("./지급자료/main.jpg", 533, 310)), 0, 0);
 
 		np.add(setBtn("메뉴등록", e -> openFrame(new MenuAddFrame())));
-		np.add(setBtn("메뉴등록", e -> openFrame(new MenuManageForm())));
-		np.add(setBtn("메뉴등록", e -> openFrame(new PayListForm())));
-		np.add(setBtn("메뉴등록", e -> openFrame(new MenuOrderlist())));
+		np.add(setBtn("메뉴관리", e -> openFrame(new MenuManageForm())));
+		np.add(setBtn("결제조회", e -> openFrame(new PayListForm())));
+		np.add(setBtn("메뉴별 주문현황", e -> openFrame(new MenuOrderlist())));
 		np.add(setBtn("종료", e -> dispose()));
 
 		add(np, BorderLayout.NORTH);

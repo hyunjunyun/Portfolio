@@ -1,6 +1,5 @@
 package frame;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
@@ -20,8 +19,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class BaseFrame extends JFrame {
@@ -51,11 +48,11 @@ public class BaseFrame extends JFrame {
 	}
 
 	public static void eMsg(String t) {
-		JOptionPane.showMessageDialog(null, t, "message", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, t, "Message", JOptionPane.ERROR_MESSAGE);
 	}
 
 	public static void iMsg(String t) {
-		JOptionPane.showMessageDialog(null, t, "message", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, t, "Message", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static JLabel setLabel(JLabel jl, Font font) {

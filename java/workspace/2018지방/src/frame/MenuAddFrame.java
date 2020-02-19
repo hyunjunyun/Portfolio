@@ -39,7 +39,7 @@ public class MenuAddFrame extends BaseFrame {
 			eMsg("메뉴명을 입력해주세요.");
 			return;
 		}
-		
+
 		System.out.println(name);
 		switch (nbf.getSelectedItem().toString()) {
 		case "한식":
@@ -57,7 +57,7 @@ public class MenuAddFrame extends BaseFrame {
 		default:
 			throw new IllegalArgumentException("Error");
 		}
-		
+
 		try (var pst = con.prepareStatement("insert into `meal` values (0,?,?,?,?,0)")) {
 			pst.setObject(1, type);
 			pst.setObject(2, name);
@@ -73,9 +73,6 @@ public class MenuAddFrame extends BaseFrame {
 		}
 	}
 
-	public void title(int type) {
-		
-	}
 	public static void main(String[] args) {
 		new MenuAddFrame().setVisible(true);
 	}
