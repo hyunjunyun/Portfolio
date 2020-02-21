@@ -105,11 +105,6 @@ public class Payform extends BaseFrame {
 	}
 
 	public void pay(ActionEvent e) {
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		for (int i = 0; i < model.getRowCount(); i++) {
-			list.add((Integer) model.getValueAt(i, 0));
-		}
-		System.out.println(list);
 		openFrame(new UserCertifiForm());
 	}
 
