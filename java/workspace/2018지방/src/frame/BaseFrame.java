@@ -76,14 +76,13 @@ public class BaseFrame extends JFrame {
 		return btn;
 
 	}
-	
+
 	public static JButton setBtnM(JButton btn, Font font, ActionListener e) {
 		btn.setMargin(new Insets(10, 10, 10, 10));
 		btn.addActionListener(e);
 		return btn;
-		
+
 	}
-	
 
 	public static JButton setBtn(JButton btn, ActionListener e) {
 		btn.addActionListener(e);
@@ -103,27 +102,17 @@ public class BaseFrame extends JFrame {
 		JPanel jp = new JPanel();
 		jp.setBorder(BorderFactory.createEmptyBorder(x, y, w, h));
 	}
-	
-//	public JComponent setEmptyBorder(int x, int y, int w, int h, JComponent...com) {
-//		JPanel jp = new JPanel();
-//		jp.setBorder(BorderFactory.createEmptyBorder(x,y,w,h));
-//		
-//		for (JComponent comp : com) {
-//			jp.add(comp);
-//		}
-//		return jp;
-//	}
-	
-	public static JPanel setPanel(LayoutManager lay, JComponent...com) {
+
+	public static JPanel setPanel(LayoutManager lay, JComponent... com) {
 		var jp = new JPanel(lay);
 		for (JComponent comp : com) {
 			jp.add(comp);
 		}
 		return jp;
 	}
-	
+
 	public static JComponent setEmpty(JPanel jp, int x, int y, int w, int h) {
-		jp.setBorder(BorderFactory.createEmptyBorder(x,y,w,h));
+		jp.setBorder(BorderFactory.createEmptyBorder(x, y, w, h));
 		return jp;
 	}
 

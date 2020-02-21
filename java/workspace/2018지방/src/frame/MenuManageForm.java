@@ -27,6 +27,7 @@ public class MenuManageForm extends BaseFrame {
 	JCheckBox box = new JCheckBox();
 	JButton btnAll = setBtn("모두 선택", e -> allSelect());
 	JComboBox<String> type = new JComboBox<String>(",한식,중식,일식,양식".split(","));
+	boolean check;
 
 	public MenuManageForm() {
 		super(600, 580, "메뉴 관리");
@@ -36,8 +37,7 @@ public class MenuManageForm extends BaseFrame {
 				setBtn("닫기", e -> openFrame(new AdminFrame()))), BorderLayout.NORTH);
 
 		model.setColumnIdentifiers(" ,mealName,price,MaxCount,todayMeal".split(","));
-		DefaultTableCellRenderer rend = new DefaultTableCellRenderer();
-		rend.setHorizontalAlignment(0);
+		
 
 		box.setHorizontalAlignment(JLabel.CENTER);
 		table.getColumn(" ").setCellRenderer(dcr);
@@ -57,6 +57,15 @@ public class MenuManageForm extends BaseFrame {
 		add(scp, BorderLayout.CENTER);
 
 		refresh();
+	}
+	
+	private void tableCheck() {
+		for (int i = 0; i < table.getRowCount(); i++) {
+			if ((boolean) table.getValueAt(i, 0) == true) {
+				check = true;
+			}
+		}
+		check = false;
 	}
 
 	public void refresh() {//테이블 업데이트
@@ -101,6 +110,7 @@ public class MenuManageForm extends BaseFrame {
 
 	public void editMenu(ActionEvent e) {//메뉴 수정
 		int cnt = 0;
+		tableCheck();
 		for (int i = 0; i < table.getRowCount(); i++) {
 			if ((boolean) table.getValueAt(i, 0) == true) {
 				cnt++;
@@ -110,7 +120,7 @@ public class MenuManageForm extends BaseFrame {
 			if (cnt > 1) {
 				eMsg("하나씩 수정가능합니다.");
 				return;
-			} else if (cnt == 0) {
+			} else if (check) {
 				eMsg("수정할 메뉴를 선택해주세요.");
 				return;
 			}
@@ -122,6 +132,7 @@ public class MenuManageForm extends BaseFrame {
 	}
 
 	public void deleteMenu(ActionEvent e) {//삭제
+		tableCheck();
 		for (int i = 0; i < table.getRowCount(); i++) {
 			if ((boolean) model.getValueAt(i, 0) == true) {
 				try (var pst = con.prepareStatement("delete from meal where mealName = ?")) {
@@ -130,9 +141,12 @@ public class MenuManageForm extends BaseFrame {
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
-			} else {
+			} 
+			
+			if (check) {
 				eMsg("삭제할 메뉴를 선택해주세요.");
 				return;
+
 			}
 		}
 		refresh();
