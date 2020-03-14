@@ -1,0 +1,140 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+
+public class UserManagement extends BaseFrame {
+	int count = 0;
+	String str[] = { "이름", "아이디", "비밀번호", "생년월일", "전화번호", "주소" };
+	JScrollPane jsc = new JScrollPane();
+	ArrayList<Object[]> arr1 = new ArrayList<Object[]>();
+
+	public UserManagement() {
+		super(800, 500, "유저관리", new BorderLayout(), 2);
+		setDesign();
+		setAction();
+		setVisible(true);
+	}
+
+	private void setAction() {
+		for (int i = 0; i < 2; i++) {
+			jb[i].addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if (e.getSource().equals(jb[0])) {
+						dispose();
+						new Admin();
+					}
+					if (e.getSource().equals(jb[1])) {
+						for (int j = 0; j < count; j++) {
+							for (int k = 0; k < 6; k++) {
+								if (((JTextField) arr1.get(j)[k]).getText().equals("")) {
+									errorMessage(
+											"빈칸이 있는 " + arr1.get(j)[6] + "번 유저를 삭제하였습니다.");
+									DB.execute("delete from user where u_no = '"
+											+ arr1.get(j)[6] + "'");
+
+								} else {
+									DB.execute("update user set u_name = '" + ((JTextField) arr1.get(j)[0]).getText()
+											+ "', u_id = '" + ((JTextField) arr1.get(j)[1]).getText()
+											+ "', u_pw = '" + ((JTextField) arr1.get(j)[2]).getText()
+											+ "', u_age = '" + ((JTextField) arr1.get(j)[3]).getText()
+											+ "', u_phone = '" + ((JTextField) arr1.get(j)[4]).getText()
+											+ "', u_address = '" + ((JTextField) arr1.get(j)[5]).getText()
+											+ "' where u_no = '" + arr1.get(j)[6] + "'");
+								}
+							}
+						}
+						informationMessage("업데이트 되었습니다.");
+						setAddPanel();
+					}
+				}
+			});
+		}
+	}
+
+	private void setDesign() {
+		add(jp[0] = new JPanel(new GridLayout(1, 0)), BorderLayout.NORTH);
+		add(jsc = new JScrollPane(jp[1] = new JPanel(new GridLayout(0, 1))), BorderLayout.CENTER);
+		add(jp[2] = new JPanel(new FlowLayout(FlowLayout.RIGHT)), BorderLayout.SOUTH);
+		for (int i = 0; i < 6; i++) {
+			jp[0].add(jl[0] = new JLabel(str[i]));
+			jl[0].setFont(new Font("", Font.BOLD, 15));
+			jl[0].setBorder(new LineBorder(Color.black));
+		}
+		jp[2].add(jb[0] = new JButton("확인"));
+		jp[2].add(jb[1] = new JButton("수정"));
+		setAddPanel();
+	}
+
+	private void setAddPanel() {
+		count = 0;
+		jp[1].removeAll();
+		arr1.clear();
+		String sql = "select * from user";
+		try {
+			ResultSet rs = DB.stmt.executeQuery(sql);
+			while (rs.next()) {
+				int check = count;
+				JPanel addjp, deteiladdjp[] = new JPanel[6];
+				JTextField addjtf[] = new JTextField[6];
+				Object obj1[] = new Object[7];
+				jp[1].add(addjp = new JPanel(new GridLayout(1, 0)));
+				for (int i = 0; i < 6; i++) {
+					addjp.add(deteiladdjp[i] = new JPanel());
+					deteiladdjp[i].add(addjtf[i] = new JTextField(10));
+					addjtf[i].setEnabled(false);
+					obj1[i] = addjtf[i];
+				}
+				addjtf[0].setText(rs.getString(5));
+				addjtf[1].setText(rs.getString(2));
+				addjtf[2].setText(rs.getString(3));
+				addjtf[3].setText(rs.getString(7));
+				addjtf[4].setText(rs.getString(6));
+				addjtf[5].setText(rs.getString(4));
+				arr1.add(obj1);
+				obj1[6] = rs.getString(1);
+				addjp.setBorder(new LineBorder(Color.black));
+				addjp.setPreferredSize(new Dimension(0, 40));
+				addjp.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						if (e.getClickCount() == 2) {
+							for (int i = 0; i < 6; i++) {
+								deteiladdjp[i].setBackground(Color.pink);
+								if (i > 1) {
+									addjtf[i].setEnabled(true);
+								}
+							}
+						}
+					}
+				});
+				count++;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		repaint();
+		revalidate();
+	}
+
+}

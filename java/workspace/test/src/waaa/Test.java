@@ -1,25 +1,24 @@
 package waaa;
 
-import java.util.Scanner;
+import java.awt.GridLayout;
 
-public class Test {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Test extends JFrame{
+	
+	public Test() {
+		setLayout(new GridLayout(10,7));
+		
+		for (int i = 0; i < 100; i++) {
+			add(new JButton(""+i));
+		}
+		setSize(700,700);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-
-		int N = sc.nextInt();
-		double[] arr = new double[N];
-		double max = -987654321, M = 0;
-
-		for (int i = 0; i < N; i++) {
-			arr[i] = sc.nextInt();
-			if (max < arr[i]) {
-				max = arr[i];
-			}
-		}
-
-		for (int i = 0; i < N; i++) {
-			M += arr[i] / max * 100.0;
-		}
-		System.out.println(M / N);
+		new Test().setVisible(true);
 	}
 }

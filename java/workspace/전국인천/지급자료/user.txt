@@ -1,0 +1,10 @@
+﻿아이디	비밀번호	닉네임	전화번호	이메일
+fizz123	fizz+1	피즈	010-1234-3456	fizz123@naver.com
+lux123	lux@1	럭스	010-2312-3988	lux321@gmail.com
+niko123	niko#1	니코	010-9292-2929	niko123@korea.com
+bad123	bad$1	바드	010-2785-1023	bad321@gmail.com
+yasuo123	yasuo!2	야스오	010-2222-2222	yasuo123@naver.com
+jin9547	jin%12	진	010-8758-7654	jin9595@naver.com
+paike	paike^6	파이크	010-6821-1027	paike3@abc.com
+kled77	kled&17	클레드	010-7717-7177	kled77@daum.net
+teemo9	teemo*9	티모	010-8888-8888	teemo@abc.com

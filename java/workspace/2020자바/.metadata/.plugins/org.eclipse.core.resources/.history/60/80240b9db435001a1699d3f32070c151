@@ -1,0 +1,107 @@
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+public class JoinMembership extends BaseFrame {
+	String str[] = { "이름:", "아이디:", "비밀번호:", "비밀번호 체크:", "전화번호:", "생년월일:", "주소:" };
+	JComponent jcom[] = { jtf[0] = new JTextField(15), jtf[1] = new JTextField(15), jpf[0] = new JPasswordField(15),
+			jpf[1] = new JPasswordField(15), jtf[2] = new JTextField(15), jtf[3] = new JTextField(15),
+			jtf[4] = new JTextField(15) };
+	int overlapCheck = 0;
+	public JoinMembership() {
+		super(350, 450, "회원가입", new GridLayout(0, 1), 2, new LoginForm());
+		setDesign();
+		setAction();
+		setVisible(true);
+	}
+
+	private void setAction() {
+		for (int i = 0; i < 3; i++) {
+			jb[i].addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(e.getSource().equals(jb[0])) {
+						if(jtf[1].getText().equals("")) {
+							errorMessage("빈칸입니다.");
+							return;
+						}
+						try {
+							ResultSet rs = DB.stmt.executeQuery("select * from user where u_id = '"+jtf[1].getText()+"'");
+							if(rs.next()) {
+								errorMessage("아이디가 중복되었습니다.");
+								return;
+							}
+							else {
+								informationMessage("중복확인이 되었습니다.");
+								overlapCheck = 1;
+							}
+						} catch (SQLException e1) {
+							e1.printStackTrace();
+						}
+					}
+					if(e.getSource().equals(jb[1])) {
+						for (int j = 0; j < 5; j++) {
+							if(j<2) {
+								if(jpf[j].getText().equals("")) {
+									errorMessage("빈칸이 있습니다.");
+									return;
+								}
+								if(jtf[j].getText().equals("")) {
+									errorMessage("빈칸이 있습니다.");
+									return;
+								}
+							}
+						}
+						if(!jpf[0].getText().equals(jpf[1].getText())) {
+							errorMessage("비밀번호를 확인해주세요.");
+							return;
+						}
+						if(overlapCheck != 1) {
+							errorMessage("중복확인을 해주세요.");
+							return;
+						}
+						informationMessage("회원가입이 완료되었습니다.");
+						DB.execute("insert into user values(0,'"+jtf[1].getText()+"','"+jpf[0].getText()+"','"+jtf[4].getText()+"','"+jtf[0].getText()+"','"+jtf[2].getText()+"','"+jtf[3].getText()+"')");
+						dispose();
+						new LoginForm();
+						return;
+					}
+					if(e.getSource().equals(jb[2])) {
+						dispose();
+						new LoginForm();
+					}
+				}
+			});
+		}
+	}
+
+	private void setDesign() {
+		for (int i = 0; i < 7; i++) {
+			jp[0] = new JPanel(new FlowLayout(FlowLayout.LEFT));
+			jp[0].add(jl[0] = new JLabel(str[i]));
+			jl[0].setPreferredSize(new Dimension(80, 30));
+			jp[0].add(jcom[i]);
+			if(i==1) {
+				jp[0].add(jb[0] = new JButton("중복확인"));
+			}
+			add(jp[0]);
+		}
+		jp[0] = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		jp[0].add(jb[1] = new JButton("회원가입"));
+		jp[0].add(jb[2] = new JButton("취소"));
+		add(jp[0]);
+		
+	}
+}

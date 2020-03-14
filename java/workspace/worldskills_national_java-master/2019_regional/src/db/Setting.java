@@ -92,6 +92,7 @@ public class Setting {
 		importFile("INSERT INTO `coffee`.`orderlist` VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);", "C:\\hjun\\code\\java\\workspace\\worldskills_national_java-master\\2019_regional\\DataFiles\\orderlist.txt");
 		
 		JOptionPane.showMessageDialog(null, "DB 생성이 완료 되었습니다.");
+		
 	}
 	
 	private static void importFile(String sql, String filePath) throws Exception {

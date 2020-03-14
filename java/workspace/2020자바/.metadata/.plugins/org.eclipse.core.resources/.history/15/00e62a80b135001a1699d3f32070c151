@@ -1,0 +1,36 @@
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+
+public class Admin extends BaseFrame {
+	
+	public Admin() {
+		super(250, 200, "包府磊", new GridLayout(0, 1), 2,this);
+		setDesign();
+		setVisible(true);
+	}
+
+	private void setDesign() {
+		add(jb[0] = new JButton("惑前包府"));
+		add(jb[1] = new JButton("蜡历包府"));
+		for (int i = 0; i < 2; i++) {
+			jb[i].addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(e.getSource().equals(jb[0])) {
+						dispose();
+						new ProductManagement();
+					}
+					if(e.getSource().equals(jb[1])) {
+						dispose();
+						new UserManagement();
+					}
+				}
+			});
+		}
+	}
+
+}

@@ -1,0 +1,90 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+public class LoginForm extends BaseFrame{
+	static String userNumber;
+	static String userId;
+	static String user;
+	static String userAdress;
+	public LoginForm() {
+		super(400, 200, "로그인", new BorderLayout(), 2, null);
+		setDesign();
+		setAction();
+		setVisible(true);
+	}
+
+	private void setAction() {
+		jb[0].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(jtf[0].getText().equals("") || jpf[0].getText().equals("")) {
+					errorMessage("빈칸이 있습니다.");
+					return;
+				}
+				if(jtf[0].getText().equals("admin") && jpf[0].getText().equals("1234")) {
+					dispose();
+					informationMessage("관리자로 로그인 하셨습니다.");
+					new Admin();
+					return;
+				}
+				try {
+					ResultSet rs = DB.stmt.executeQuery("select * from user where u_id = '" + jtf[0].getText() + "' and u_pw = '" + jpf[0].getText() + "'");
+					if(rs.next()) {
+						dispose();
+						informationMessage(rs.getString(5) + "님 환영합니다.");
+						userId = rs.getString(2);
+						user = rs.getString(5);
+						userAdress = rs.getString(4);
+						userNumber = rs.getString(1);
+						new ProductForm(user);
+						return;
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				errorMessage("아이디나 비밀번호가 틀렸습니다.");
+				return;
+			}
+		});
+		jl[1].addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				dispose();
+				new JoinMembership();
+			}
+		});
+	}
+
+	private void setDesign() {
+		add(jl[0] = new JLabel("<html>market<br/>Kurly</html>",JLabel.CENTER),BorderLayout.NORTH);
+		add(jp[0] = new JPanel(new BorderLayout()));
+		add(jl[1] = new JLabel("회원가입",JLabel.RIGHT),BorderLayout.SOUTH);
+		jl[0].setForeground(Color.MAGENTA);
+		jl[0].setFont(new Font("HY헤드라인M", Font.BOLD, 20));
+		jp[0].add(jp[1] = new JPanel(new FlowLayout(FlowLayout.RIGHT,20,20)),BorderLayout.CENTER);
+		jp[0].add(jp[2] = new JPanel(new FlowLayout()),BorderLayout.EAST);
+		jp[1].add(new JLabel("아이디  : "));
+		jp[1].add(jtf[0] = new JTextField(15));
+		jp[1].add(new JLabel("비밀번호  : "));
+		jp[1].add(jpf[0] = new JPasswordField(15));
+		jp[2].add(jb[0] = new JButton("로그인"));
+		jb[0].setPreferredSize(new Dimension(80, 80));
+	}
+
+}

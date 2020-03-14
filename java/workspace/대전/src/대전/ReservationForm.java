@@ -48,6 +48,7 @@ public class ReservationForm extends BaseFrame {
 	boolean chk = true;
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-M-d");
 	LocalDate rNow = LocalDate.now();
+
 	public ReservationForm(ArrayList<String> searchList, int index) {
 		super("�삁�빟", 700, 800, null);
 		this.searchList = searchList;
@@ -71,7 +72,7 @@ public class ReservationForm extends BaseFrame {
 		mImageL.setBorder(new LineBorder(Color.black));
 		for (int i = 0; i < 5; i++) {
 			setComponents(imageL[i] = new JLabel(), 540, 50 * i, 105, 50);
-			imageL[i].setName((i+1)+"");
+			imageL[i].setName((i + 1) + "");
 			imageL[i].setBorder(new LineBorder(Color.black));
 		}
 
@@ -143,64 +144,62 @@ public class ReservationForm extends BaseFrame {
 			e.printStackTrace();
 		}
 
-		mImageL.setIcon(new ImageIcon(
-				readImage("./吏�湲됱옄猷�/�샇�뀛�씠誘몄�/" + searchList.get(index) + "/" + searchList.get(index) + " 1.jpg", 500, 250)));
+		mImageL.setIcon(new ImageIcon(readImage(
+				"./吏�湲됱옄猷�/�샇�뀛�씠誘몄�/" + searchList.get(index) + "/" + searchList.get(index) + " 1.jpg", 500, 250)));
 		for (int i = 0; i < 5; i++) {
-			File file = new File("./吏�湲됱옄猷�/�샇�뀛�씠誘몄�/" + searchList.get(index) + "/" + searchList.get(index) + " " + (i + 1) + ".jpg");
-			if(file.exists())
-			imageL[i].setIcon(new ImageIcon(readImage(file.getAbsolutePath()
-					, 105,
-					50)));
+			File file = new File("./吏�湲됱옄猷�/�샇�뀛�씠誘몄�/" + searchList.get(index) + "/" + searchList.get(index) + " "
+					+ (i + 1) + ".jpg");
+			if (file.exists())
+				imageL[i].setIcon(new ImageIcon(readImage(file.getAbsolutePath(), 105, 50)));
 		}
 	}
 
 	@Override
 	void addListeners() {
-		
+
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				super.windowClosed(e);
-				if(chk)
+				if (chk)
 					new SearchForm();
 			}
 		});
-		
-		for(int i = 0 ; i <42; i++) {
-			ndateB[i].addActionListener(e->{
-				JToggleButton b = (JToggleButton) e.getSource();
+
+		for (int i = 0; i < 42; i++) {
+			ndateB[i].addActionListener(e -> {
+				JButton b = (JButton) e.getSource();
 				LocalDate local = LocalDate.of(now.getYear(), now.getMonthValue(), toInt(b.getText()));
-				if(rNow.isAfter(local)|| rNow.isEqual(local)) {
-					errMSg("�씠誘� 吏��궃 �궇�옄�� �떦�씪 �삁�빟�� 遺덇��뒫�빀�땲�떎.");
+				if (rNow.isAfter(local) || rNow.isEqual(local)) {
 					b.setSelected(false);
 					return;
 				}
-				
-				for(int z = 0 ; z<42; z++) {
+
+				for (int z = 0; z < 42; z++) {
 					ndateB[z].setSelected(false);
 					adateB[z].setSelected(false);
 				}
-					
-				selectDate = now.getYear()+"-"+now.getMonthValue()+"-"+b.getText();
+
+				selectDate = now.getYear() + "-" + now.getMonthValue() + "-" + b.getText();
 				b.setSelected(true);
 			});
-			adateB[i].addActionListener(e->{
+			adateB[i].addActionListener(e -> {
 				JToggleButton b = (JToggleButton) e.getSource();
 				LocalDate local = LocalDate.of(after.getYear(), after.getMonthValue(), toInt(b.getText()));
-				if(rNow.isAfter(local)|| rNow.isEqual(local)) {
-					errMSg("�씠誘� 吏��궃 �궇�옄�� �떦�씪 �삁�빟�� 遺덇��뒫�빀�땲�떎.");
+				if (rNow.isAfter(local) || rNow.isEqual(local)) {
+					errMSg("�");
 					b.setSelected(false);
 					return;
 				}
-				for(int z = 0 ; z<42; z++) {
+				for (int z = 0; z < 42; z++) {
 					ndateB[z].setSelected(false);
 					adateB[z].setSelected(false);
 				}
-				selectDate = after.getYear()+"-"+after.getMonthValue()+"-"+b.getText();
+				selectDate = after.getYear() + "-" + after.getMonthValue() + "-" + b.getText();
 				b.setSelected(true);
 			});
 		}
-		
+
 		for (int i = 0; i < 5; i++) {
 			imageL[i].addMouseListener(new MouseAdapter() {
 				@Override
@@ -208,18 +207,22 @@ public class ReservationForm extends BaseFrame {
 					super.mouseEntered(e);
 					setCursor(Cursor.HAND_CURSOR);
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					super.mouseExited(e);
 					setCursor(Cursor.DEFAULT_CURSOR);
 				}
+
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					super.mouseClicked(e);
 					JLabel l = (JLabel) e.getSource();
-					if(l.getIcon()==null)return;
-					mImageL.setIcon(new ImageIcon(readImage("./吏�湲됱옄猷�/�샇�뀛�씠誘몄�/" + searchList.get(index) + "/" + searchList.get(index) + " " + l.getName()+".jpg", 500, 250)));
-					
+					if (l.getIcon() == null)
+						return;
+					mImageL.setIcon(new ImageIcon(readImage("./吏�湲됱옄猷�/�샇�뀛�씠誘몄�/" + searchList.get(index) + "/"
+							+ searchList.get(index) + " " + l.getName() + ".jpg", 500, 250)));
+
 				}
 			});
 		}
@@ -267,8 +270,9 @@ public class ReservationForm extends BaseFrame {
 			num = 1;
 		JPanel jp = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		JPanel inner = new JPanel(new GridLayout(7, 7));
-		setComponents(jp, dateL[num] = new JLabel(local.getYear() + "�뀈 " + local.getMonthValue() + "�썡", JLabel.CENTER),
-				0, 0, 290, 20);
+		setComponents(jp,
+				dateL[num] = new JLabel(local.getYear() + "�뀈 " + local.getMonthValue() + "�썡", JLabel.CENTER), 0, 0,
+				290, 20);
 		setComponents(jp, inner, 0, 0, 290, 180);
 		// size : 302,400
 
@@ -300,16 +304,15 @@ public class ReservationForm extends BaseFrame {
 		if (startDay >= 7)
 			startDay -= 7;
 
-		
 		for (int i = 0; i < endDay; i++) {
 			ndateB[i + startDay].setText((i + 1) + "");
 			ndateB[i + startDay].setVisible(true);
 			ndateB[i + startDay].setEnabled(true);
 			ndateB[i + startDay].setSelected(false);
-			if(selectDate.equals(now.getYear()+"-"+now.getMonthValue()+"-"+(i+1))) {
+			if (selectDate.equals(now.getYear() + "-" + now.getMonthValue() + "-" + (i + 1))) {
 				ndateB[i + startDay].setSelected(true);
 			}
-			
+
 		}
 		startDay = after.getDayOfWeek().getValue();
 		endDay = after.lengthOfMonth();
@@ -321,63 +324,73 @@ public class ReservationForm extends BaseFrame {
 			adateB[i + startDay].setVisible(true);
 			adateB[i + startDay].setEnabled(true);
 			adateB[i + startDay].setSelected(false);
-			if(selectDate.equals(after.getYear()+"-"+after.getMonthValue()+"-"+(i+1))) {
+			if (selectDate.equals(after.getYear() + "-" + after.getMonthValue() + "-" + (i + 1))) {
 				adateB[i + startDay].setSelected(true);
 			}
 		}
-		
-		String weddinghall_index = DBSetting.getOneResult("select weddinghall_index from weddinghall where weddinghall_name = '" + searchList.get(index)+"'");
+
+		String weddinghall_index = DBSetting.getOneResult(
+				"select weddinghall_index from weddinghall where weddinghall_name = '" + searchList.get(index) + "'");
 		try {
-			ResultSet rs= DBSetting.stmt.executeQuery("select date from reservation where weddinghall_index = " +weddinghall_index);
-			while(rs.next()) {
+			ResultSet rs = DBSetting.stmt
+					.executeQuery("select date from reservation where weddinghall_index = " + weddinghall_index);
+			while (rs.next()) {
 				int year = toInt(rs.getString(1).split("-")[0]);
 				int mon = toInt(rs.getString(1).split("-")[1]);
-				 int day= toInt(rs.getString(1).split("-")[2]);
-				 if(now.getYear()==year && now.getMonthValue()==mon)
-					 for(int i = 0 ; i <42; i++)
-						 if(ndateB[i].getText().equals(day+""))
-							 ndateB[i].setEnabled(false);
-				 if(after.getYear()==year && after.getMonthValue()==mon)
-					 for(int i = 0 ; i <42; i++)
-						 if(adateB[i].getText().equals(day+""))
-							 adateB[i].setEnabled(false);
+				int day = toInt(rs.getString(1).split("-")[2]);
+				if (now.getYear() == year && now.getMonthValue() == mon)
+					for (int i = 0; i < 42; i++)
+						if (ndateB[i].getText().equals(day + ""))
+							ndateB[i].setEnabled(false);
+				if (after.getYear() == year && after.getMonthValue() == mon)
+					for (int i = 0; i < 42; i++)
+						if (adateB[i].getText().equals(day + ""))
+							adateB[i].setEnabled(false);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+
 	}
 
 	void complete() {
-		err="";
-		if(text[5].getText().equals("")) {
+		err = "";
+		if (text[5].getText().equals("")) {
 			errMSg("�씤�썝�닔瑜� 諛붾Ⅴ寃� �엯�젰�빐二쇱꽭�슂");
 			return;
 		}
-		if(text[5].getText().matches("[0-9]*")==false)
+		if (text[5].getText().matches("[0-9]*") == false)
 			err = "�씤�썝�닔瑜� 諛붾Ⅴ寃� �엯�젰�빐二쇱꽭�슂.";
-		if(toInt(text[2].getText())<toInt(text[5].getText()))
-			err="�씤�썝�닔瑜� 諛붾Ⅴ寃� �엯�젰�빐二쇱꽭�슂";
-		if(selectDate.equals(""))
-			err="�궇吏쒕�� �꽑�깮�빐二쇱꽭�슂.";
-		if(chkErr()==false)return;
-		
+		if (toInt(text[2].getText()) < toInt(text[5].getText()))
+			err = "�씤�썝�닔瑜� 諛붾Ⅴ寃� �엯�젰�빐二쇱꽭�슂";
+		if (selectDate.equals(""))
+			err = "�궇吏쒕�� �꽑�깮�빐二쇱꽭�슂.";
+		if (chkErr() == false)
+			return;
+
 		JPanel jp = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		jp.add(new JLabel("�삁�빟�씠 �셿猷뚮릺�뿀�뒿�땲�떎."));
 		LocalDate date = LocalDate.parse(selectDate, dtf);
-		String num = date.getYear() + dec.format(date.getMonthValue()) + dec.format(date.getDayOfMonth())+ dec.format(toInt(DBSetting.getOneResult("select weddinghall_index from weddinghall where weddinghall_name = '" + text[0].getText() +"'")))+"";
-		Object obj[] = {"�겢由쎈낫�뱶�뿉 蹂듭궗","�솗�씤"};
+		String num = date.getYear() + dec.format(date.getMonthValue()) + dec.format(date.getDayOfMonth())
+				+ dec.format(toInt(
+						DBSetting.getOneResult("select weddinghall_index from weddinghall where weddinghall_name = '"
+								+ text[0].getText() + "'")))
+				+ "";
+		Object obj[] = { "�겢由쎈낫�뱶�뿉 蹂듭궗", "�솗�씤" };
 
-		DBSetting.execute("insert into reservation values(" + num +", " +  DBSetting.getOneResult("select weddinghall_index from weddinghall where weddinghall_name = '" + text[0].getText() +"'")
-		+", " + text[5].getText() +" , " + DBSetting.getOneResult("select weddingtype_index from weddingtype where weddingtype_name = '" + com[0].getSelectedItem()+"'")
-			+", " + DBSetting.getOneResult("select mealtype_index from mealtype where mealtype_name = '" + com[1].getSelectedItem()+"'")+",0,0,0, '" + selectDate+"',0"
-				+ ")");
-		
-		int n = JOptionPane.showOptionDialog(null, "�삁�빟�씠 �셿猷뚮릺�뿀�뒿�땲�떎.\n�삁�빟踰덊샇�뒗 " + num +" �엯�땲�떎.", "�삁�빟�셿猷�", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, obj, obj[0]);
-		if(n==JOptionPane.YES_OPTION) {
+		DBSetting.execute("insert into reservation values(" + num + ", " + DBSetting.getOneResult(
+				"select weddinghall_index from weddinghall where weddinghall_name = '" + text[0].getText() + "'") + ", "
+				+ text[5].getText() + " , "
+				+ DBSetting.getOneResult("select weddingtype_index from weddingtype where weddingtype_name = '"
+						+ com[0].getSelectedItem() + "'")
+				+ ", "
+				+ DBSetting.getOneResult(
+						"select mealtype_index from mealtype where mealtype_name = '" + com[1].getSelectedItem() + "'")
+				+ ",0,0,0, '" + selectDate + "',0" + ")");
+
+		int n = JOptionPane.showOptionDialog(null, "�삁�빟�씠 �셿猷뚮릺�뿀�뒿�땲�떎.\n�삁�빟踰덊샇�뒗 " + num + " �엯�땲�떎.", "�삁�빟�셿猷�",
+				JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, obj, obj[0]);
+		if (n == JOptionPane.YES_OPTION) {
 			Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
 			clip.setContents(new StringSelection(num), null);
 			infoMSg("蹂듭궗媛� �셿猷뚮릺�뿀�뒿�땲�떎.");
@@ -385,10 +398,7 @@ public class ReservationForm extends BaseFrame {
 		chk = false;
 		dispose();
 		new MainForm();
-		
-		
+
 	}
-	
-	
-	
+
 }

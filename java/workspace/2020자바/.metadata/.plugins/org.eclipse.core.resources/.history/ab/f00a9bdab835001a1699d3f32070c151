@@ -1,0 +1,81 @@
+import java.awt.Image;
+import java.awt.LayoutManager;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+public class BaseFrame extends JFrame {
+	JButton jb[] = new JButton[10];
+	JPanel jp[] = new JPanel[10];
+	JComboBox jcom[] = new JComboBox[10];
+	JTextField jtf[] = new JTextField[10];
+	JPasswordField jpf[] = new JPasswordField[10];
+	JLabel jl[] = new JLabel[10];
+	JFrame openJframe = new JFrame();
+
+	public BaseFrame(int w, int h, String title, LayoutManager lay, int de) {
+		setSize(w, h);
+		setBounds(0, 0, w, h);
+		setTitle(title);
+		setLayout(lay);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(de);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				dispose();
+				openJframe.setVisible(true);
+			}
+		});
+
+	}
+
+	int chageIntger(Object integer) {
+		return Integer.parseInt(integer.toString());
+	}
+
+	void errorMessage(String msg) {
+		JOptionPane.showMessageDialog(null, msg, "Error", JOptionPane.ERROR_MESSAGE);
+	}
+
+	void informationMessage(String msg) {
+		JOptionPane.showMessageDialog(null, msg, "Information", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	Image addImage(String path, int w, int h) {
+		Image im =  null;
+		try {
+			im = ImageIO.read(new File(path));		
+		} catch (IOException e) {
+			
+		}
+		im = im.getScaledInstance(w, h, Image.SCALE_SMOOTH);
+		return im;
+	}
+	
+	void setComponents(JPanel jp, JComponent jcom,int x, int y, int w, int h) {
+		jcom.setBounds(x, y, w, h);
+		jp.add(jcom);
+	}
+	
+	void setComponents(JComponent jcom,int x, int y, int w, int h) {
+		jcom.setBounds(x, y, w, h);
+		add(jcom);
+	}
+
+	
+	
+}
+
