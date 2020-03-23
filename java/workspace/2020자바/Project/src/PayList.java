@@ -34,7 +34,7 @@ public class PayList extends BaseFrame {
 			jl[0].setFont(new Font("", Font.BOLD, 15));
 		}
 		jp[2].add(jb[0] = new JButton("»Æ¿Œ"));
-		try (ResultSet rs = stmt.executeQuery("select * from purchaselist where u_no ='" + userNo + "'")) {
+		try (ResultSet rs = stmt.executeQuery("select * from purchaselist where u_no ='" + userNo + "' limit 3")) {
 			while (rs.next()) {
 				JPanel addjp = new JPanel(new GridLayout(1, 0));
 				jp[1].add(addjp);
@@ -61,5 +61,9 @@ public class PayList extends BaseFrame {
 
 	void openJFrame() {
 		new ProductForm();
+	}
+	
+	public static void main(String[] args) {
+		new PayList().setVisible(true);
 	}
 }
