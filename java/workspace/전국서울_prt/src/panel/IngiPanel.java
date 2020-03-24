@@ -1,4 +1,4 @@
-package frame;
+package panel;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
+
+import data.UserData;
 
 public class IngiPanel extends BasePanel {
 	String index="";

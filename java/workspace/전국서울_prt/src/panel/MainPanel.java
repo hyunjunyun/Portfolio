@@ -1,4 +1,4 @@
-package frame;
+package panel;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -7,6 +7,9 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import data.UserData;
+import db.CM;
 
 public class MainPanel extends BasePanel{
 	JPanel cp = setComp(new JPanel(new FlowLayout(FlowLayout.LEFT)), 740, 300);

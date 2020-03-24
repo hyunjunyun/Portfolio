@@ -1,10 +1,11 @@
 package frame;
 
-import static frame.BasePanel.setComp;
-import static frame.BasePanel.setLabel;
+import static panel.BasePanel.setComp;
+import static panel.BasePanel.setLabel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,6 +14,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import data.UserData;
+import panel.HotelSearchPanel;
+import panel.LoginModal;
+import panel.MainPanel;
+import panel.MyPagePanel;
+import panel.SignUpModal;
 
 public class MainForm extends BaseFrame {
 
@@ -34,11 +42,11 @@ public class MainForm extends BaseFrame {
 		super(895, 650, "Hotel", 2);
 		this.ud = ud;
 		
+		setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
 		ud.setUName("96k55");
 		ud.setPhone("010-2057-2825");
 		ud.setNo(29);
 		jp = new MainPanel(ud);
-		System.out.println(jp.getName());
 		setEp();
 		ep.setBackground(Color.white);
 		add(ep, BorderLayout.WEST);

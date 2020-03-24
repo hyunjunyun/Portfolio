@@ -1,4 +1,4 @@
-package frame;
+package panel;
 
 import javax.swing.JDialog;
 

@@ -1,4 +1,4 @@
-package frame;
+package panel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,6 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
+
+import data.UserData;
+import db.CM;
+import frame.NoticeForm;
 
 public class MyPagePanel extends BasePanel {
 

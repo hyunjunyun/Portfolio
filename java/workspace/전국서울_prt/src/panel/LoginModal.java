@@ -1,4 +1,9 @@
-package frame;
+package panel;
+
+import static panel.BasePanel.eMsg;
+import static panel.BasePanel.iMsg;
+import static panel.BasePanel.setBtn;
+import static panel.BasePanel.setComp;
 
 import java.awt.FlowLayout;
 import java.awt.Window;
@@ -8,10 +13,9 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import static frame.BasePanel.setComp;
-import static frame.BasePanel.setBtn;
-import static frame.BasePanel.eMsg;
-import static frame.BasePanel.iMsg;
+import data.UserData;
+import db.CM;
+import frame.MainForm;
 
 public class LoginModal extends JDialog {
 	int w = 280, h = 25;

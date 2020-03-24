@@ -1,5 +1,7 @@
 package frame;
 
+import static panel.BasePanel.setLabel;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,7 +16,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
-import static frame.BasePanel.setLabel;
+import data.UserData;
+import db.CM;
+import panel.BasePanel;
 
 public class NoticeForm extends BaseFrame {
 

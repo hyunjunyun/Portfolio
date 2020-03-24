@@ -1,5 +1,7 @@
 package frame;
 
+import data.UserData;
+
 public class GUI {
 
 	UserData ud = new UserData();
