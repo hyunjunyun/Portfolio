@@ -9,14 +9,17 @@ import java.awt.event.MouseEvent;
 public class ExampleMain {
   public static void main(String[] args) {
       JFrame frame = createFrame();
-
+      
       JLayeredPane layeredPane = new JLayeredPane();
 
       //adding a button to the JLayeredPane
+      JPanel jp = new JPanel();
+      var jsc = new JScrollPane(jp);
       JButton button = new JButton("Show message");
       //need to do absolute positioning because by default LayeredPane has null layout,
-      button.setBounds(100, 50, 150, 30);
+      button.setSize(200,200);
       layeredPane.add(button, JLayeredPane.DEFAULT_LAYER);//depth 0
+      layeredPane.add(jsc, 1);//depth 300
       
       JButton button1 = new JButton("Show message");
       //need to do absolute positioning because by default LayeredPane has null layout,
@@ -24,33 +27,30 @@ public class ExampleMain {
       layeredPane.add(button1, JLayeredPane.DEFAULT_LAYER);//depth 0
 
       //adding an initially invisible JLabel in an upper layer
-      JPanel jp = new JPanel();
-      jp.setOpaque(true);
+      jsc.setSize(200,50);
       //setting background with transparency value to see though the label
-      jp.setBackground(new Color(50, 210, 250, 200));
       //just set the size for now
       jp.setSize(200, 50);
       jp.setBorder(new LineBorder(Color.black));
-      jp.setVisible(false);
-      layeredPane.add(jp, 1);//depth 300
+      jsc.setVisible(false);
       
       //to make label visible
       button.addActionListener(e -> {
           JComponent source = (JComponent) e.getSource();
           //set the  popup label location at center of the source component
-          jp.setLocation(new Point(source.getX(),
+          jsc.setLocation(new Point(source.getX(),
                   source.getHeight()+source.getY()));
-          jp.setVisible(true);
+          jsc.setVisible(true);
       });
 
       //to hide the label
       frame.addMouseListener(new MouseAdapter() {
           @Override
           public void mousePressed(MouseEvent e) {
-              jp.setVisible(false);
+              jsc.setVisible(false);
           }
       });
-
+      frame.add(button);
       frame.add(layeredPane);
       frame.setLocationRelativeTo(null);
       frame.setVisible(true);
@@ -59,6 +59,7 @@ public class ExampleMain {
   private static JFrame createFrame() {
       JFrame frame = new JFrame("JLayeredPane Basic Example");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.setLayout(new FlowLayout(FlowLayout.CENTER));
       frame.setSize(new Dimension(500, 400));
       return frame;
   }
