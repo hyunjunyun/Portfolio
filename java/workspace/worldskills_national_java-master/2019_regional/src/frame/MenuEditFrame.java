@@ -19,7 +19,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-
 public class MenuEditFrame extends FrameBase {
 
 	JComboBox<String> cbGroup = new JComboBox<>("전체,음료,푸드,상품".split(","));

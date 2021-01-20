@@ -7,12 +7,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.sql.Date;
 import java.util.Calendar;
 
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -20,7 +17,7 @@ import javax.swing.border.LineBorder;
 import frame.BaseFrame;
 
 public class CalendarFrame extends BaseFrame {
-
+	
 	public CalendarFrame() {
 		super(720, 600, "Hotel", 3);
 		setLayout(new BorderLayout());
@@ -96,7 +93,7 @@ public class CalendarFrame extends BaseFrame {
 					jp[i-1].setBorder(new LineBorder(Color.black));
 				}else {
 					cp.add(jp[i-1] = new JPanel(new FlowLayout(FlowLayout.LEFT)));
-					jp[i-1].add(new JLabel("" + cnt));
+					jp[i-1].add(setComp(new JLabel("" + cnt), 50, 20));
 					jp[i-1].setBorder(new LineBorder(Color.black));
 					jp[i-1].setBackground(Color.white);
 					setMouse(jp[i-1]);
@@ -144,17 +141,29 @@ public class CalendarFrame extends BaseFrame {
 					}else if (jc==ny) {
 						y++;
 					}
-						
-					for (int i = 0; i < jp.length; i++) {
-						if (jc==jp[i]) {
-							jp[i].add(setComp(new JLabel("체크인",0), 60, 30));
-							System.out.println(i+1);
-						}
-					}
 					setCal();
 					changeDate();
 				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					for (int i = 0; i < jp.length; i++) {
+						if (jc==jp[i]) {
+							jp[i].add(setComp(new JLabel("체크인",0), 60, 30));
+							revalidate();
+						}
+					}
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					for (int i = 0; i < jp.length; i++) {
+						jp[i].removeAll();
+					}
+					changeDate();
+				}
 			});
+			
 		}
 	}
 }

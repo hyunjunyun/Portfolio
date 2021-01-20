@@ -1,13 +1,12 @@
 package frame;
 
-import java.sql.Statement;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,17 +22,10 @@ public class BaseFrame extends JFrame {
 
 	static String user1Name;
 	static String user2Name;
-
+	
 	static {
-		user1Name="바드";
-		user2Name="피즈";
-		
-		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost/omok?serverTimezone=UTC","user","1234");
-			stmt = con.createStatement();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		user1Name = "";
+		user2Name = "";
 	}
 	public BaseFrame(int w, int h, String t, int n) {
 		setSize(w, h);

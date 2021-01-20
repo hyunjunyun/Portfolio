@@ -1,5 +1,6 @@
 package frame;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class BaseFrame extends JFrame{
@@ -9,5 +10,10 @@ public class BaseFrame extends JFrame{
 		setTitle(t);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(d);
+	}
+
+	public JButton setBtn() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

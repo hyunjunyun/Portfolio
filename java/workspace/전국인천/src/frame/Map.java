@@ -61,6 +61,7 @@ public class Map {
 		}
 	}
 
+	///// 승리 체크 부분
 	public boolean winCheck(int x, int y) {
 
 		if (winCheckL(x, y) || winCheckLD(x, y) || winCheckLU(x, y) || winCheckR(x, y)
@@ -82,55 +83,30 @@ public class Map {
 	}
 
 	// 위쪽
-
 	public boolean winCheckUp(int x, int y) {
-
 		try {
-
 			for (int i = y; i < y + 5; i++) {
-
 				if (map[y][x] != map[i][x])
-
 					return false;
-
 			}
-
 		} catch (ArrayIndexOutOfBoundsException e) {
-
 			return false;
-
 		}
-
 		return true;
-
 	}
-
+	
 	// 아래쪽
-
 	public boolean winCheckDown(int x, int y) {
-
 		try {
-
 			for (int i = y; i > y - 5; i--) {
-
 				if (map[y][x] != map[i][x])
-
 					return false;
-
 			}
-
 		} catch (ArrayIndexOutOfBoundsException e) {
-
-			// TODO: handle exception
-
 			return false;
-
 		}
-
 		return true;
-
 	}
-
 	// 오른쪽 위 대각선
 
 	public boolean winCheckRU(int x, int y) {
@@ -243,7 +219,7 @@ public class Map {
 
 			for (int i = y, z = x; i < y + 5; i++, z++) {
 
-				if (map[y][x] != map[i][z] || i > 19 || z > 19 || i < 0 || z < 0)
+				if (map[y][x] != map[i][z])
 
 					return false;
 
@@ -276,65 +252,35 @@ public class Map {
 			}
 
 		} catch (ArrayIndexOutOfBoundsException e) {
-
-			// TODO: handle exception
-
 			return false;
-
 		}
-
 		return true;
-
 	}
 
 	// 한칸 위쪽
-
 	public boolean winCheckOneUp(int x, int y) {
-
 		try {
-
 			for (int i = y - 1; i < y + 4; i++) {
-
 				if (map[y][x] != map[i][x])
-
 					return false;
-
 			}
-
 		} catch (ArrayIndexOutOfBoundsException e) {
-
 			return false;
-
 		}
-
 		return true;
-
 	}
 
 	// 한칸 아래쪽
-
 	public boolean winCheckOneDown(int x, int y) {
-
 		try {
-
 			for (int i = y + 1; i > y - 4; i--) {
-
 				if (map[y][x] != map[i][x])
-
 					return false;
-
 			}
-
 		} catch (ArrayIndexOutOfBoundsException e) {
-
-			// TODO: handle exception
-
 			return false;
-
 		}
-
 		return true;
-
 	}
 
 	public boolean winCheckOneRU(int x, int y) {
@@ -388,7 +334,7 @@ public class Map {
 	public boolean winCheckOneRD(int x, int y) {
 		try {
 			for (int i = y - 1, z = x - 1; i < y + 4; i++, z++) {
-				if (map[y][x] != map[i][z] || i > 19 || z > 19 || i < 0 || z < 0)
+				if (map[y][x] != map[i][z])
 					return false;
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {

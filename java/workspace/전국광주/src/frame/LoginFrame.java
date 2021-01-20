@@ -1,10 +1,9 @@
 package frame;
 
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
+import java.util.concurrent.ForkJoinTask;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -39,5 +38,5 @@ public class LoginFrame extends BaseFrame {
 	public static void main(String[] args) {
 		new LoginFrame().setVisible(true);
 	}
-
+	
 }

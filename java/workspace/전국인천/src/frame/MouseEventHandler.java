@@ -20,18 +20,22 @@ public class MouseEventHandler extends MouseAdapter {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		int result = 1;
 		super.mousePressed(e);
+		int result = 1;
+		
 		int x = (int) Math.round(e.getX() / (double) ms.getCell()) - 1;// set x location
 		int y = (int) Math.round(e.getY() / (double) ms.getCell()) - 2;// set y location
-		if (x < 0 || x > 19 || y < 0 || y > 19) {// click map out of range
+		
+		if (x < 0 || x > 19 || y < 0 || y > 19) {// click outside
 			return;
 		}
 
 		if (map.getXY(y, x) == map.getBlack() || map.getXY(y, x) == map.getWhite()) {
-			return;// already exist stone
+			return;// already exist stone on board
 		}
-		System.out.println(x + " " + y);
+		
+		System.out.println("X ÁÂÇ¥: "+ x +" Y ÁÂÇ¥: " + y);
+		
 		map.setMap(x, y);// set stone location
 		map.changeCheck();// check black or white
 		d.repaint();// repaint
@@ -40,9 +44,8 @@ public class MouseEventHandler extends MouseAdapter {
 			result = JOptionPane.showConfirmDialog(null, map.getCheck() + "ÀÌ ÀÌ°å½À´Ï´Ù.\n´Ù½ÃÇÏ½Ã°Ú½À´Ï±î?", "½Â¸®",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		}
-		System.out.println(result);
+		
 		if (result==0) {
-			System.out.println("a");
 			Map.resetMap();
 			d.repaint();
 		}

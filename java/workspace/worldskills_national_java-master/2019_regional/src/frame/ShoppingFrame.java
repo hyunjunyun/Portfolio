@@ -103,8 +103,6 @@ public class ShoppingFrame extends FrameBase {
 		}
 		
 		if (answer == JOptionPane.NO_OPTION) {
-			// 현금결제
-			
 			try {
 				stmt.execute("INSERT INTO orderlist ("
 						+ "SELECT 0, CURDATE(), " + userNo + ", shopping.m_no, m_group, s_size, s_price, s_count, s_amount FROM shopping "

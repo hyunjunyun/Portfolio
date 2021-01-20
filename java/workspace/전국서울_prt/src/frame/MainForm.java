@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,7 +38,11 @@ public class MainForm extends BaseFrame {
 	UserData ud;
 	JPanel jp;
 	JPanel ep = setComp(new JPanel(), 120, getHeight());
-
+	
+	@Override
+	public JButton setBtn() {
+		return new JButton();
+	}
 	public MainForm(UserData ud) {
 		super(895, 650, "Hotel", 2);
 		this.ud = ud;
@@ -137,5 +142,9 @@ public class MainForm extends BaseFrame {
 				lb.setText("<html><font size='5' color='black'><strong>" + lb.getText() + "</strong></font></html>");
 			}
 		});
+	}
+	
+	public static void main(String[] args) {
+		new MainForm(new UserData()).setVisible(true);
 	}
 }

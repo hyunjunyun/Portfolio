@@ -24,20 +24,14 @@ public class GUI extends BaseFrame {
 		var ep = setComp(new JPanel(new GridLayout(0, 1)), 650, 0, 300, 700);
 		setLayout(null);
 		addMouseListener(new MouseEventHandler(map, size, d, this));
-		setContentPane(d);
+		add(setComp(d, 0,0,650,700));
 		ep.setBorder(new LineBorder(Color.pink));
 		var ep_n = new JPanel(null);
 		var ep_s = new JPanel(null);
 
 		var ep_n_in = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		var ep_s_in = setComp(new JPanel(new FlowLayout(FlowLayout.LEFT)), 10, 15, 300, 685);
-
-//		ep_n_in.setBorder(new LineBorder(Color.gray));
-//		ep_n_in.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Èæµ¹"));
-//
-//		ep_s_in.setBorder(new LineBorder(Color.gray));
-//		ep_s_in.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Èæµ¹"));
-
+		
 		ep_s.setBorder(new LineBorder(Color.gray));
 		ep_n.setBorder(new LineBorder(Color.gray));
 

@@ -49,9 +49,6 @@ public class StarBoxFrame extends FrameBase {
 
 		updateLabel();
 
-		for (String text : new String[] { "음료", "푸드", "상품" }) {
-			westPanel.add(createComp(createButtonWithoutMargin(text, e -> clickG(text)), 55, 35));
-		}
 
 		var scp = createComp(new JScrollPane(menuPanel), 0, 0, 580, 480);
 
